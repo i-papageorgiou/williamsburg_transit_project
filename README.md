@@ -8,18 +8,36 @@ for the full plan and rationale.
 ## Status
 
 **Phase 0 (API access requests) is in progress.** The Transit API and
-WATA's Swiftly GTFS-RT key are both pending, which blocks the real-time
-reliability analysis (Phase 3–4). Everything that only needs WATA's public
-GTFS static feed does **not** depend on those keys and is implemented now:
+WATA's Swiftly GTFS-RT key are both pending, which blocks actually
+*running* the real-time collector. Everything that can be built and
+tested without a live key is implemented now:
 
 - Phase 1 — GTFS download/archive pipeline (`wata.gtfs`)
 - Phase 2 — Service-level metrics: trip volume, span, headway by route
   (`wata.metrics.service`)
 - Phase 2 — Coverage: 800m walksheds around served stops, tagged by
   service frequency tier (`wata.metrics.access`)
+- Phase 3 (prep) — Stratified 100-stop sample for the collector to poll,
+  guaranteeing every active route is represented rather than letting the
+  busiest stops dominate (`wata.sampling`)
+- Phase 3 (prep) — Transit API client with a persisted monthly call
+  budget and a rate limiter, tested against a mocked session/fake clock
+  (`wata.transit_api`)
+- Phase 3 (prep) — WATA stop_id → Transit `global_stop_id` mapping logic,
+  clustering stop coordinates to resolve the mapping in a handful of
+  calls instead of one per stop; tested against a fake API response
+  (`wata.stop_mapping`)
+- Phase 3 (skeleton) — snapshot collector (`wata.collect`) and its
+  GitHub Actions cron (`.github/workflows/collect.yml`); refuses to run
+  without `TRANSIT_API_KEY` and a cached stop mapping, both pending Phase 0
+- `.github/workflows/refresh-gtfs.yml` — weekly GTFS re-archive, no key
+  needed
 
-Not yet started: real-time collection, reliability metrics, equity join
-against Census data, and the published dashboard (Phases 3–5).
+Blocked on Phase 0: actually running the collector, reliability metrics
+computed from its output, and the equity join against Census data (a
+separate, free, instant key — not blocked, just not yet requested). The
+published dashboard currently ships the GTFS-only metrics with a
+"reliability: collecting since —" placeholder.
 
 ## Setup
 
@@ -45,6 +63,9 @@ PYTHONPATH=src python -m wata.pipeline
 ```bash
 PYTHONPATH=src python -m pytest tests/ -q
 ```
+
+All 28 tests run against the real archived feed or mocked
+HTTP/clock — none require a live API key.
 
 ## Data notes
 

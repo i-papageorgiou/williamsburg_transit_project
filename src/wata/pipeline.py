@@ -12,6 +12,7 @@ from pathlib import Path
 from wata.gtfs import GtfsFeed, REPO_ROOT
 from wata.metrics.access import coverage_summary, walksheds
 from wata.metrics.service import all_route_spans, service_summary
+from wata.sampling import select_stratified_stops
 
 PROCESSED_DIR = REPO_ROOT / "data" / "processed"
 DASHBOARD_DATA_DIR = REPO_ROOT / "dashboard" / "data"
@@ -31,6 +32,12 @@ def main() -> None:
     sheds.to_file(PROCESSED_DIR / "walksheds.geojson", driver="GeoJSON")
 
     coverage = coverage_summary(feed)
+
+    # The stop sample the real-time collector will poll once a key exists
+    # (Phase 3). Recomputed here so it stays in sync with the current feed
+    # rather than going stale between GTFS refreshes.
+    sample = select_stratified_stops(feed)
+    sample.to_csv(PROCESSED_DIR / "stop_sample.csv", index=False)
 
     dashboard_payload = {
         "snapshot_date": feed.snapshot_date.isoformat(),
@@ -52,6 +59,7 @@ def main() -> None:
     print(f"Wrote {PROCESSED_DIR / 'route_service_summary.csv'}")
     print(f"Wrote {PROCESSED_DIR / 'route_spans_by_service_id.csv'}")
     print(f"Wrote {PROCESSED_DIR / 'walksheds.geojson'}")
+    print(f"Wrote {PROCESSED_DIR / 'stop_sample.csv'}")
     print(f"Wrote {DASHBOARD_DATA_DIR / 'gtfs_metrics.json'}")
     print(f"Coverage by frequency tier (km^2): {coverage}")
 

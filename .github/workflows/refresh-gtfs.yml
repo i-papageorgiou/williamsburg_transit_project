@@ -1,0 +1,41 @@
+name: Refresh GTFS feed
+
+# WATA's static feed only guarantees roughly a month forward and is
+# republished at a fixed URL with no versioning, so this archives a fresh
+# copy weekly under data/gtfs/<date>/ (see src/wata/gtfs.py). No API key
+# needed - this is WATA's public GTFS download, not the Transit API.
+
+on:
+  schedule:
+    - cron: "0 12 * * 1"  # every Monday, 12:00 UTC
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install -e .
+
+      - name: Download and archive today's feed
+        run: python -c "from wata.gtfs import download_feed; print(download_feed())"
+
+      - name: Recompute GTFS-only metrics
+        run: python -m wata.pipeline
+
+      - name: Commit refreshed feed and metrics
+        run: |
+          git config user.name "wata-collector-bot"
+          git config user.email "actions@github.com"
+          git add data/gtfs/ data/processed/ dashboard/data/
+          git diff --cached --quiet || git commit -m "Refresh GTFS feed $(date -u +%Y-%m-%d)"
+          git push
