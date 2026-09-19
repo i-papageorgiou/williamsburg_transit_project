@@ -1,0 +1,144 @@
+{
+  "snapshot_date": "2026-09-18",
+  "routes": [
+    {
+      "route_id": "15",
+      "route_short_name": "15",
+      "route_long_name": "Colonial",
+      "weekday_trips": 144,
+      "weekday_span_minutes": 747.0,
+      "saturday_trips": 144,
+      "sunday_trips": 104,
+      "has_weekend_service": true
+    },
+    {
+      "route_id": "8",
+      "route_short_name": "8",
+      "route_long_name": "W&M",
+      "weekday_trips": 64,
+      "weekday_span_minutes": 957.0,
+      "saturday_trips": 0,
+      "sunday_trips": 0,
+      "has_weekend_service": false
+    },
+    {
+      "route_id": "1",
+      "route_short_name": "1",
+      "route_long_name": "Lee Hall",
+      "weekday_trips": 58,
+      "weekday_span_minutes": 897.0,
+      "saturday_trips": 30,
+      "sunday_trips": 20,
+      "has_weekend_service": true
+    },
+    {
+      "route_id": "2",
+      "route_short_name": "2",
+      "route_long_name": "Richmond",
+      "weekday_trips": 58,
+      "weekday_span_minutes": 897.0,
+      "saturday_trips": 30,
+      "sunday_trips": 20,
+      "has_weekend_service": true
+    },
+    {
+      "route_id": "12",
+      "route_short_name": "12",
+      "route_long_name": "Ironbound",
+      "weekday_trips": 58,
+      "weekday_span_minutes": 896.0,
+      "saturday_trips": 58,
+      "sunday_trips": 20,
+      "has_weekend_service": true
+    },
+    {
+      "route_id": "5",
+      "route_short_name": "5",
+      "route_long_name": "Monticello",
+      "weekday_trips": 30,
+      "weekday_span_minutes": 887.0,
+      "saturday_trips": 30,
+      "sunday_trips": 20,
+      "has_weekend_service": true
+    },
+    {
+      "route_id": "9",
+      "route_short_name": "9",
+      "route_long_name": "Toano",
+      "weekday_trips": 30,
+      "weekday_span_minutes": 899.0,
+      "saturday_trips": 30,
+      "sunday_trips": 20,
+      "has_weekend_service": true
+    },
+    {
+      "route_id": "6",
+      "route_short_name": "6",
+      "route_long_name": "Jamestown",
+      "weekday_trips": 30,
+      "weekday_span_minutes": 896.0,
+      "saturday_trips": 30,
+      "sunday_trips": 20,
+      "has_weekend_service": true
+    },
+    {
+      "route_id": "7",
+      "route_short_name": "7",
+      "route_long_name": "Mooretown",
+      "weekday_trips": 30,
+      "weekday_span_minutes": 894.0,
+      "saturday_trips": 30,
+      "sunday_trips": 20,
+      "has_weekend_service": true
+    },
+    {
+      "route_id": "4",
+      "route_short_name": "4",
+      "route_long_name": "Longhill",
+      "weekday_trips": 30,
+      "weekday_span_minutes": 897.0,
+      "saturday_trips": 30,
+      "sunday_trips": 20,
+      "has_weekend_service": true
+    },
+    {
+      "route_id": "3",
+      "route_short_name": "3",
+      "route_long_name": "Merrimac",
+      "weekday_trips": 30,
+      "weekday_span_minutes": 897.0,
+      "saturday_trips": 30,
+      "sunday_trips": 20,
+      "has_weekend_service": true
+    },
+    {
+      "route_id": "11",
+      "route_short_name": "11",
+      "route_long_name": "Lackey",
+      "weekday_trips": 18,
+      "weekday_span_minutes": 801.0,
+      "saturday_trips": 18,
+      "sunday_trips": 0,
+      "has_weekend_service": true
+    },
+    {
+      "route_id": "12A",
+      "route_short_name": "12A",
+      "route_long_name": "Ironbound",
+      "weekday_trips": 0,
+      "weekday_span_minutes": null,
+      "saturday_trips": 0,
+      "sunday_trips": 0,
+      "has_weekend_service": false
+    }
+  ],
+  "coverage_km2_by_tier": {
+    "frequent": 13.58,
+    "infrequent": 108.48,
+    "moderate": 55.7
+  },
+  "reliability": {
+    "status": "not_yet_available",
+    "note": "Requires several weeks of real-time polling once a Transit API or WATA Swiftly key is granted (Phase 0)."
+  }
+}

@@ -1,0 +1,45 @@
+route_id,service_id,first_departure,last_departure,span_minutes,trip_count,route_short_name,route_long_name,service_label
+1,CWF-Weekday,06:00:00,20:57:00,897.0,58,1,Lee Hall,Weekday (W&M academic calendar)
+1,Full-Sa,06:00:00,20:57:00,897.0,30,1,Lee Hall,Saturday
+1,Full-Su,08:00:00,17:57:00,597.0,20,1,Lee Hall,Sunday
+1,Full-Weekday,06:00:00,20:57:00,897.0,58,1,Lee Hall,Weekday (full)
+11,CWF-Weekday,06:10:00,19:31:00,801.0,18,11,Lackey,Weekday (W&M academic calendar)
+11,Full-Sa,06:10:00,19:31:00,801.0,18,11,Lackey,Saturday
+11,Full-Weekday,06:10:00,19:31:00,801.0,18,11,Lackey,Weekday (full)
+12,CWF-Weekday,06:00:00,20:57:00,897.0,58,12,Ironbound,Weekday (W&M academic calendar)
+12,Full-Sa,06:00:00,20:56:00,896.0,58,12,Ironbound,Saturday
+12,Full-Su,08:00:00,17:57:00,597.0,20,12,Ironbound,Sunday
+12,Full-Weekday,06:00:00,20:56:00,896.0,58,12,Ironbound,Weekday (full)
+15,CWF-Weekday,08:57:00,21:24:00,747.0,144,15,Colonial,Weekday (W&M academic calendar)
+15,Full-Sa,08:57:00,21:24:00,747.0,144,15,Colonial,Saturday
+15,Full-Su,08:57:00,18:04:00,547.0,104,15,Colonial,Sunday
+15,Full-Weekday,08:57:00,21:24:00,747.0,144,15,Colonial,Weekday (full)
+2,CWF-Weekday,06:00:00,20:57:00,897.0,58,2,Richmond,Weekday (W&M academic calendar)
+2,Full-Sa,06:00:00,20:57:00,897.0,30,2,Richmond,Saturday
+2,Full-Su,08:00:00,17:57:00,597.0,20,2,Richmond,Sunday
+2,Full-Weekday,06:00:00,20:57:00,897.0,58,2,Richmond,Weekday (full)
+3,CWF-Weekday,06:00:00,20:57:00,897.0,30,3,Merrimac,Weekday (W&M academic calendar)
+3,Full-Sa,06:00:00,20:57:00,897.0,30,3,Merrimac,Saturday
+3,Full-Su,08:00:00,17:57:00,597.0,20,3,Merrimac,Sunday
+3,Full-Weekday,06:00:00,20:57:00,897.0,30,3,Merrimac,Weekday (full)
+4,CWF-Weekday,05:55:00,20:52:00,897.0,30,4,Longhill,Weekday (W&M academic calendar)
+4,Full-Sa,05:55:00,20:52:00,897.0,30,4,Longhill,Saturday
+4,Full-Su,07:55:00,17:52:00,597.0,20,4,Longhill,Sunday
+4,Full-Weekday,05:55:00,20:52:00,897.0,30,4,Longhill,Weekday (full)
+5,CWF-Weekday,06:00:00,20:47:00,887.0,30,5,Monticello,Weekday (W&M academic calendar)
+5,Full-Sa,06:00:00,20:47:00,887.0,30,5,Monticello,Saturday
+5,Full-Su,08:00:00,17:47:00,587.0,20,5,Monticello,Sunday
+5,Full-Weekday,06:00:00,20:47:00,887.0,30,5,Monticello,Weekday (full)
+6,CWF-Weekday,06:00:00,20:56:00,896.0,30,6,Jamestown,Weekday (W&M academic calendar)
+6,Full-Sa,06:00:00,20:55:00,895.0,30,6,Jamestown,Saturday
+6,Full-Su,08:00:00,17:55:00,595.0,20,6,Jamestown,Sunday
+6,Full-Weekday,06:00:00,20:56:00,896.0,30,6,Jamestown,Weekday (full)
+7,CWF-Weekday,06:00:00,20:54:00,894.0,30,7,Mooretown,Weekday (W&M academic calendar)
+7,Full-Sa,06:00:00,20:52:00,892.0,30,7,Mooretown,Saturday
+7,Full-Su,08:00:00,17:52:00,592.0,20,7,Mooretown,Sunday
+7,Full-Weekday,06:00:00,20:54:00,894.0,30,7,Mooretown,Weekday (full)
+8,Full-Weekday,07:00:00,22:57:00,957.0,64,8,W&M,Weekday (full)
+9,CWF-Weekday,05:54:00,20:54:00,900.0,30,9,Toano,Weekday (W&M academic calendar)
+9,Full-Sa,05:55:00,20:54:00,899.0,30,9,Toano,Saturday
+9,Full-Su,07:55:00,17:54:00,599.0,20,9,Toano,Sunday
+9,Full-Weekday,05:55:00,20:54:00,899.0,30,9,Toano,Weekday (full)
