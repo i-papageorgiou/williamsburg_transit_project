@@ -12,7 +12,7 @@ from pathlib import Path
 from wata.gtfs import GtfsFeed, REPO_ROOT
 from wata.metrics.access import coverage_summary, walksheds
 from wata.metrics.service import all_route_spans, service_summary
-from wata.sampling import select_stratified_stops
+from wata.sampling import poll_stop_ids, select_core_stops
 
 PROCESSED_DIR = REPO_ROOT / "data" / "processed"
 DASHBOARD_DATA_DIR = REPO_ROOT / "dashboard" / "data"
@@ -33,11 +33,16 @@ def main() -> None:
 
     coverage = coverage_summary(feed)
 
-    # The stop sample the real-time collector will poll once a key exists
-    # (Phase 3). Recomputed here so it stays in sync with the current feed
-    # rather than going stale between GTFS refreshes.
-    sample = select_stratified_stops(feed)
-    sample.to_csv(PROCESSED_DIR / "stop_sample.csv", index=False)
+    # The core+rotation sample the real-time collector polls (see
+    # wata.sampling). Recomputed here so it stays in sync with the current
+    # feed rather than going stale between GTFS refreshes.
+    core = select_core_stops(feed)
+    first_poll = poll_stop_ids(feed, 0, core_stop_ids=core)
+    sample_summary = feed.stops[feed.stops["stop_id"].isin(first_poll)][
+        ["stop_id", "stop_name", "stop_lat", "stop_lon"]
+    ].copy()
+    sample_summary["in_core"] = sample_summary["stop_id"].isin(core)
+    sample_summary.to_csv(PROCESSED_DIR / "stop_sample.csv", index=False)
 
     dashboard_payload = {
         "snapshot_date": feed.snapshot_date.isoformat(),
@@ -46,8 +51,9 @@ def main() -> None:
         "reliability": {
             "status": "not_yet_available",
             "note": (
-                "Requires several weeks of real-time polling once a "
-                "Transit API or WATA Swiftly key is granted (Phase 0)."
+                "Requires several weeks of real-time polling against the "
+                "Transit API (Phase 0, granted; WATA's own Swiftly "
+                "GTFS-RT feed is not being pursued)."
             ),
         },
     }

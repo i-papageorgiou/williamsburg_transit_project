@@ -139,6 +139,6 @@
   },
   "reliability": {
     "status": "not_yet_available",
-    "note": "Requires several weeks of real-time polling once a Transit API or WATA Swiftly key is granted (Phase 0)."
+    "note": "Requires several weeks of real-time polling against the Transit API (Phase 0, granted; WATA's own Swiftly GTFS-RT feed is not being pursued)."
   }
 }

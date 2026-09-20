@@ -1,13 +1,21 @@
 name: Collect real-time snapshot
 
-# Polls stop_departures for the 100-stop sample every 20 minutes across
-# WATA's service span (05:54-22:57 ET). Requires the TRANSIT_API_KEY
-# secret (Phase 0, pending) and a cached stop-id mapping at
+# Polls stop_departures once every 20 minutes across WATA's service span
+# (05:54-22:57 ET), using the core+rotation sample from wata.sampling: a
+# ~48-stop core (every active route+direction, every poll) plus a rotating
+# slice of the other ~255 served stops, so the full 303-stop network gets
+# swept into the dataset over a few days without exceeding 100 IDs/call.
+# Every call also requests max_num_departures=10 (the API's own max, up
+# from its default of 3) at no extra call cost. Requires the
+# TRANSIT_API_KEY secret and a cached stop-id mapping at
 # data/processed/stop_id_mapping.json before it can do anything but exit
-# early with a clear error — see src/wata/collect.py.
+# early with a clear error — see src/wata/collect.py and wata/sampling.py.
 #
-# 20-minute granularity keeps this well under the free tier's 1,500
-# calls/month even with GitHub Actions cron's few-minutes drift.
+# This is the only real-time data source for this project (WATA's Swiftly
+# GTFS-RT feed is not being pursued), so the 1,500 calls/month free tier
+# is the hard ceiling on reliability data collection. 20-minute polling is
+# ~51 calls/day (~1,530/month) — reserve headroom by widening the interval
+# if quality/plan-endpoint calls (Phase 4) are added later in the month.
 
 on:
   schedule:
@@ -41,6 +49,6 @@ jobs:
         run: |
           git config user.name "wata-collector-bot"
           git config user.email "actions@github.com"
-          git add data/raw/ data/processed/api_call_budget.json
+          git add data/raw/ data/processed/api_call_budget.json data/processed/poll_index.json
           git diff --cached --quiet || git commit -m "Add real-time snapshot $(date -u +%Y-%m-%dT%H:%M)"
           git push

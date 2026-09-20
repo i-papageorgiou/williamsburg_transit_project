@@ -1,7 +1,7 @@
 import gzip
 import json
 
-from wata.collect import append_snapshot, collect_one_snapshot
+from wata.collect import append_snapshot, collect_one_snapshot, next_poll_index
 
 
 class FakeClient:
@@ -31,3 +31,11 @@ def test_append_snapshot_writes_gzipped_ndjson(tmp_path):
     with gzip.open(path, "rt", encoding="utf-8") as f:
         lines = [json.loads(line) for line in f]
     assert lines == [{"a": 1}, {"b": 2}]
+
+
+def test_next_poll_index_starts_at_zero_and_increments(tmp_path):
+    path = tmp_path / "poll_index.json"
+    assert next_poll_index(path) == 0
+    assert next_poll_index(path) == 1
+    assert next_poll_index(path) == 2
+    assert json.loads(path.read_text()) == {"poll_index": 3}
