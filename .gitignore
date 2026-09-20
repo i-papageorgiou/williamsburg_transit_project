@@ -180,3 +180,6 @@ cython_debug/
 .cursorignore
 .cursorindexingignore
 .DS_Store
+
+# Project planning doc (internal, not part of the published project)
+Project_Plan.md
