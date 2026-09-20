@@ -156,14 +156,35 @@ class TransitApiClient:
             {"lat": lat, "lon": lon, "max_distance": max_distance},
         )
 
-    def stop_departures(self, global_stop_ids: list[str]) -> dict:
+    def stop_departures(
+        self,
+        global_stop_ids: list[str],
+        *,
+        max_num_departures: int = 10,
+        remove_cancelled: bool = False,
+    ) -> dict:
+        """max_num_departures defaults to 10 (the API's own maximum, default
+        is 3) — this costs nothing extra against the call budget but returns
+        up to 3.3x more schedule items per merged itinerary per call, which
+        matters a lot given the free tier's call ceiling.
+
+        remove_cancelled stays False (the API default) because a
+        cancellation is itself a reliability signal we want to keep, not
+        noise to filter out.
+        """
         if len(global_stop_ids) > 100:
             raise ValueError(
                 f"stop_departures accepts at most 100 stop IDs, got {len(global_stop_ids)}"
             )
+        if not 1 <= max_num_departures <= 10:
+            raise ValueError("max_num_departures must be between 1 and 10")
         return self._get(
             "/v4/public/stop_departures",
-            {"global_stop_ids": ",".join(global_stop_ids)},
+            {
+                "global_stop_ids": ",".join(global_stop_ids),
+                "max_num_departures": max_num_departures,
+                "remove_cancelled": str(remove_cancelled).lower(),
+            },
         )
 
     def plan(self, from_lat: float, from_lon: float, to_lat: float, to_lon: float) -> dict:
