@@ -38,6 +38,17 @@ GTFS_FILES = (
 )
 
 
+def time_to_minutes(t: str) -> float:
+    """Convert a GTFS HH:MM:SS time to minutes past midnight.
+
+    GTFS allows hours >= 24 for service that runs past midnight; this is
+    preserved rather than wrapped, so span/duration math stays correct.
+    Shared by wata.metrics.service and wata.collect's poll-window check.
+    """
+    h, m, s = t.split(":")
+    return int(h) * 60 + int(m) + int(s) / 60
+
+
 def download_feed(dest_dir: Path | None = None, *, date: dt.date | None = None) -> Path:
     """Download the current WATA GTFS feed and archive it under today's date.
 
@@ -146,3 +157,32 @@ class GtfsFeed:
         by any trip (303) — this is the set that matters for analysis.
         """
         return set(self.stop_times["stop_id"])
+
+    def has_departure_within(self, when: dt.datetime, lookahead_minutes: float) -> bool:
+        """Whether any scheduled departure on `when`'s calendar date falls
+        in [when, when + lookahead_minutes] local time-of-day.
+
+        Used by the real-time collector to skip polling outside service
+        hours (WATA's spans vary sharply by day type — e.g. Sunday is
+        07:55-18:04 vs. 05:54-22:57 on weekdays — so this is checked live
+        against calendar_dates.txt rather than encoded in a cron schedule).
+
+        Only `when`'s own date is checked: WATA's service never crosses
+        midnight (latest observed span end is 22:57), so there's no need
+        to also check the previous day's late-running trips.
+        """
+        service_ids = self.service_ids_on(when.date())
+        if not service_ids:
+            return False
+        trip_ids = self.trips.loc[self.trips["service_id"].isin(service_ids), "trip_id"]
+        st = self.stop_times[self.stop_times["trip_id"].isin(trip_ids)]
+        if st.empty:
+            return False
+        minutes_now = when.hour * 60 + when.minute + when.second / 60
+        departure_minutes = st["departure_time"].map(time_to_minutes)
+        return bool(
+            (
+                (departure_minutes >= minutes_now)
+                & (departure_minutes <= minutes_now + lookahead_minutes)
+            ).any()
+        )

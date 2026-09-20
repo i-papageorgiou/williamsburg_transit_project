@@ -10,7 +10,7 @@ import datetime as dt
 
 import pandas as pd
 
-from wata.gtfs import GtfsFeed
+from wata.gtfs import GtfsFeed, time_to_minutes
 
 # Representative dates used to characterize each service pattern. The
 # WATA feed only guarantees a ~1 month forward window, so callers should
@@ -21,16 +21,6 @@ SERVICE_ID_LABELS = {
     "Full-Sa": "Saturday",
     "Full-Su": "Sunday",
 }
-
-
-def _time_to_minutes(t: str) -> int:
-    """Convert a GTFS HH:MM:SS time to minutes past midnight.
-
-    GTFS allows hours >= 24 for service that runs past midnight; this
-    is preserved rather than wrapped, so span/duration math stays correct.
-    """
-    h, m, s = t.split(":")
-    return int(h) * 60 + int(m) + int(s) / 60
 
 
 def trips_per_route_by_service(feed: GtfsFeed) -> pd.DataFrame:
@@ -65,7 +55,7 @@ def route_span(feed: GtfsFeed, route_id: str, service_id: str) -> dict:
             "trip_count": 0,
         }
 
-    minutes = st["departure_time"].map(_time_to_minutes)
+    minutes = st["departure_time"].map(time_to_minutes)
     return {
         "route_id": route_id,
         "service_id": service_id,
@@ -106,7 +96,7 @@ def headway_by_hour(feed: GtfsFeed, route_id: str, service_id: str) -> pd.DataFr
 
     busiest_stop = st["stop_id"].value_counts().idxmax()
     at_stop = st[st["stop_id"] == busiest_stop].copy()
-    at_stop["minutes"] = at_stop["departure_time"].map(_time_to_minutes)
+    at_stop["minutes"] = at_stop["departure_time"].map(time_to_minutes)
     at_stop = at_stop.sort_values("minutes")
     at_stop["hour"] = (at_stop["minutes"] // 60).astype(int) % 24
     at_stop["headway"] = at_stop["minutes"].diff()

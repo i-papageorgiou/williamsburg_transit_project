@@ -25,6 +25,15 @@ BASE_URL = "https://external.transitapp.com"
 BUDGET_LEDGER_PATH = REPO_ROOT / "data" / "processed" / "api_call_budget.json"
 
 FREE_TIER_MONTHLY_CALLS = 1500
+
+# The ledger this cap guards is only accurate if the collector's commit
+# actually lands (see .github/workflows/collect.yml's push-retry logic) —
+# a failed push under-counts calls already spent against Transit's own
+# server-side limit, which doesn't forgive that. Enforcing 1,400 instead of
+# the full 1,500 leaves margin for that drift plus one-time costs (mapping
+# rebuilds, Phase 4's plan() calls) without risking the real quota.
+CALL_BUDGET_SAFETY_CAP = 1400
+
 FREE_TIER_CALLS_PER_MINUTE = 5
 
 
@@ -76,7 +85,7 @@ class CallBudget:
     it survives across collector runs (e.g. separate GitHub Actions jobs).
     """
 
-    monthly_cap: int = FREE_TIER_MONTHLY_CALLS
+    monthly_cap: int = CALL_BUDGET_SAFETY_CAP
     ledger_path: Path = field(default_factory=lambda: BUDGET_LEDGER_PATH)
 
     def _load(self) -> dict:

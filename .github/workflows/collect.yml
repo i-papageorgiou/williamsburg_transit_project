@@ -1,28 +1,51 @@
 name: Collect real-time snapshot
 
-# Polls stop_departures once every 20 minutes across WATA's service span
-# (05:54-22:57 ET), using the core+rotation sample from wata.sampling: a
-# ~48-stop core (every active route+direction, every poll) plus a rotating
-# slice of the other ~255 served stops, so the full 303-stop network gets
-# swept into the dataset over a few days without exceeding 100 IDs/call.
-# Every call also requests max_num_departures=10 (the API's own max, up
-# from its default of 3) at no extra call cost. Requires the
-# TRANSIT_API_KEY secret and a cached stop-id mapping at
-# data/processed/stop_id_mapping.json before it can do anything but exit
-# early with a clear error — see src/wata/collect.py and wata/sampling.py.
+# Polls stop_departures every 30 minutes across a generous UTC window; the
+# actual "is anything running right now" decision lives in
+# src/wata/collect.py's should_poll_now(), which checks the archived GTFS
+# calendar (calendar_dates.txt) live rather than being baked into this cron
+# schedule. Service spans differ sharply by day type (weekday 05:54-22:57,
+# Saturday 05:55-21:24, Sunday 07:55-18:04 ET) and cron can't see the GTFS
+# calendar, so encoding spans here would drift at every schedule change and
+# break twice a year at DST. Runs outside real service hours exit before
+# spending a call.
+#
+# Uses the core+rotation sample from wata.sampling: a ~48-stop core (every
+# active route+direction, every poll) plus a rotating slice of the other
+# ~255 served stops, so the full 303-stop network gets swept into the
+# dataset over a few days without exceeding 100 IDs/call. Every call also
+# requests max_num_departures=10 (the API's own max, up from its default of
+# 3) at no extra call cost. Requires the TRANSIT_API_KEY secret and a
+# cached stop-id mapping at data/processed/stop_id_mapping.json — both
+# already in place (see src/wata/collect.py and wata/sampling.py).
 #
 # This is the only real-time data source for this project (WATA's Swiftly
-# GTFS-RT feed is not being pursued), so the 1,500 calls/month free tier
-# is the hard ceiling on reliability data collection. 20-minute polling is
-# ~51 calls/day (~1,530/month) — reserve headroom by widening the interval
-# if quality/plan-endpoint calls (Phase 4) are added later in the month.
+# GTFS-RT feed is not being pursued), so the free tier's 1,500 calls/month
+# is the hard ceiling on reliability data collection, not a temporary one.
+# 30-minute polling, trimmed to real service hours by should_poll_now(),
+# comes to roughly:
+#   weekday ~34 polls/day, Saturday ~31/day, Sunday ~20/day
+# ≈221/week, ≈960/month — leaving headroom under the cap (itself lowered to
+# 1,400 in src/wata/transit_api.py as a safety margin) for the mapping
+# rebuild, Phase 4's plan() quality calls, and any missed-push retries.
 
 on:
   schedule:
-    # Every 20 minutes, 10:00-02:59 UTC = 06:00-22:59 ET (covers DST both ways).
-    - cron: "*/20 10-23 * * *"
-    - cron: "*/20 0-2 * * *"
+    # Every 30 minutes, 09:00-03:59 UTC = 05:00-23:59 ET covering both
+    # standard and daylight time, wider than any actual service span so
+    # should_poll_now() is always the one deciding, never this schedule.
+    - cron: "0,30 9-23 * * *"
+    - cron: "0,30 0-3 * * *"
   workflow_dispatch: {}
+
+concurrency:
+  # Overlapping runs (a delayed run plus its on-time successor) would both
+  # spend a call before either commits, and could race to push the same
+  # poll_index/budget-ledger update. cancel-in-progress is left off — a
+  # delayed run should still finish and commit its own snapshot, just not
+  # run concurrently with the next one.
+  group: wata-collector
+  cancel-in-progress: false
 
 permissions:
   contents: write
@@ -36,6 +59,7 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
+          cache: pip
 
       - name: Install dependencies
         run: pip install -e .
@@ -45,10 +69,33 @@ jobs:
           TRANSIT_API_KEY: ${{ secrets.TRANSIT_API_KEY }}
         run: python -m wata.collect
 
-      - name: Commit snapshot
+      - name: Commit and push snapshot
         run: |
           git config user.name "wata-collector-bot"
           git config user.email "actions@github.com"
           git add data/raw/ data/processed/api_call_budget.json data/processed/poll_index.json
-          git diff --cached --quiet || git commit -m "Add real-time snapshot $(date -u +%Y-%m-%dT%H:%M)"
-          git push
+
+          if git diff --cached --quiet; then
+            echo "Nothing to commit (run was skipped outside service hours)."
+            exit 0
+          fi
+
+          git commit -m "Add real-time snapshot $(date -u +%Y-%m-%dT%H:%M)"
+
+          # The concurrency group above prevents two runs of THIS workflow
+          # from overlapping, but another workflow (refresh-gtfs.yml) or a
+          # manual push can still land in between fetch and push. Losing
+          # that race would otherwise drop a snapshot that already cost a
+          # real API call — retry a few times with a rebase before giving up.
+          for attempt in 1 2 3 4 5; do
+            if git push; then
+              exit 0
+            fi
+            echo "Push rejected (attempt $attempt/5) — rebasing onto origin/main and retrying."
+            git fetch origin main
+            git rebase origin/main
+            sleep $((attempt * 5))
+          done
+
+          echo "Push failed after 5 attempts — snapshot is committed locally in this runner only."
+          exit 1
