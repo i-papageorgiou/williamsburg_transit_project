@@ -4,11 +4,11 @@ route_id,route_short_name,route_long_name,weekday_trips,weekday_span_minutes,sat
 1,1,Lee Hall,58,897.0,30,20,True
 2,2,Richmond,58,897.0,30,20,True
 12,12,Ironbound,58,896.0,58,20,True
-5,5,Monticello,30,887.0,30,20,True
-9,9,Toano,30,899.0,30,20,True
-6,6,Jamestown,30,896.0,30,20,True
-7,7,Mooretown,30,894.0,30,20,True
 4,4,Longhill,30,897.0,30,20,True
+9,9,Toano,30,899.0,30,20,True
+5,5,Monticello,30,887.0,30,20,True
+6,6,Jamestown,30,896.0,30,20,True
 3,3,Merrimac,30,897.0,30,20,True
+7,7,Mooretown,30,894.0,30,20,True
 11,11,Lackey,18,801.0,18,0,True
 12A,12A,Ironbound,0,,0,0,False

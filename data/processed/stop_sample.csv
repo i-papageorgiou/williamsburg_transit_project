@@ -4,25 +4,22 @@ stop_id,stop_name,stop_lat,stop_lon,in_core
 0_2576862,Richmond Rd at Richmond Hall,37.27866,-76.71665,True
 0_2576834,Jamestown Rd at Cary St,37.268308,-76.712646,True
 0_2576906,Jamestown Rd at Campus Center,37.26979,-76.70909,False
-0_2576844,Merrimac Trl at Duffie Dr,37.26411,-76.67408,False
+0_2576844,Merrimac Trl at Duffie Dr,37.26411,-76.67408,True
 0_2576870,Pocahontas Trl at BG Bavaria Lot,37.24421,-76.65593,True
 0_2576854,Richmond Rd at VA Peanuts,37.28604,-76.72082,False
 0_2576853,Richmond Rd at Kyoto,37.29309,-76.72439,False
 0_2576852,Richmond Rd at Fireside,37.29874,-76.72721,False
-0_2577084,Richmond Rd at Airport Rd,37.31305,-76.73222,True
 0_2576820,Richmond Rd at Premium Outlets,37.32034,-76.73538,True
-0_2576851,Richmond Rd at Wellesley,37.33261,-76.74519,False
+0_2576851,Richmond Rd at Wellesley,37.33261,-76.74519,True
 0_2576860,Richmond Rd at Herndon Jenkins,37.33342,-76.74641,False
 0_2576888,Richmond Rd at Olde Towne Rd,37.31662,-76.73423,False
 0_2576859,Richmond Rd at Stratford Rd,37.31034,-76.73142,False
 0_2576858,Richmond Rd at Taco Bell,37.2969,-76.72651,True
 0_2576857,Richmond Rd at Rt 60 Barbeque,37.29324,-76.72469,True
-0_2577092,N Boundary St at Merchant Square,37.27138,-76.7074,True
 0_2576877,Battery Blvd at Harris Teeter,37.24923,-76.68397,False
 0_2576876,Mounts Bay Rd at JCC Gov Center,37.24485,-76.68265,False
 0_2576830,Mooretown Rd at Bulifants Blvd,37.33339,-76.73576,True
-0_2576840,Centerville Rd at Forest Glen 1,37.3178712,-76.7887966,False
-0_2576961,Mooretown Rd at Ewell 3,37.32049,-76.73446,True
+0_2576840,Centerville Rd at Forest Glen 1,37.3178712,-76.7887966,True
 0_2576869,Pocahontas Trl at Merrill Lynch,37.24574,-76.65771,False
 0_2576890,Pocahontas Trl at Fort Magruder,37.2643,-76.67854,False
 0_2576865,Richmond Rd at Peter Chang,37.28072,-76.71855,True
@@ -37,10 +34,12 @@ stop_id,stop_name,stop_lat,stop_lon,in_core
 0_2576893,John Tyler Hwy at Mcdonalds,37.25261,-76.76434,False
 0_2576894,John Tyler Hwy at Westray Downs,37.25302,-76.75673,False
 0_2576846,Capitol Landing Rd at Merrimac Trl,37.28618,-76.68654,False
+0_2576920,Merrimac Trl at Colonial Pines,37.281,-76.68327,False
 0_2576845,Merrimac Trl at 2nd St,37.27313,-76.6796,False
 0_2576843,Merrimac Trl at Fastenal,37.26018,-76.67127,True
 0_2576867,Pocahontas Trl at Creative Kids,37.22558,-76.62621,False
 0_2576814,Pocahontas Trl at Colonial Manor,37.22123,-76.62579,True
+0_2576911,Longhill Rd at New Zion Church,37.31591,-76.78149,False
 0_2576850,Penniman Rd at Custis Dr,37.26243,-76.66479,False
 0_2576817,Jamestown Rd at CVS,37.2551,-76.73093,True
 0_2576900,Jamestown Rd at Colony Square,37.25201,-76.7339,False
@@ -49,27 +48,29 @@ stop_id,stop_name,stop_lat,stop_lon,in_core
 0_2576819,Discovery Park Blvd at Discovery Park,37.27982,-76.73939,True
 0_2576863,Ironbound Rd at Salvation Army,37.2892,-76.72827,False
 0_2576847,Capitol Landing Rd at Red Roof Inn,37.28072,-76.68886,False
+0_2576919,Merrimac Trl at Orange Dr,37.25554,-76.6669,False
+0_2576921,Merrimac Trl at Colonial Health,37.24547,-76.65386,False
 0_2577053,Visitor Center Dr at CW Visitor Center,37.27879,-76.69836,True
 0_2576815,Battery Blvd at Riverside Hospital,37.25355,-76.66654,True
 0_2576832,Queens Path at Riverside,37.25668,-76.74143,True
-0_2577077,Pocahontas Trl at Happy Shopper,37.20787,-76.61134,True
-0_2576871,Pocahontas Trl at Creative Kids,37.22672,-76.62633,False
-0_2576831,Mooretown Rd at Colony Dr,37.28699,-76.71789,False
+0_2576871,Pocahontas Trl at Creative Kids,37.22672,-76.62633,True
+0_2576831,Mooretown Rd at Colony Dr,37.28699,-76.71789,True
 0_2576816,Bypass Rd. at Days Inn,37.2845,-76.70841,True
 0_2576838,Treyburn Dr at Brookdale,37.28266,-76.72647,True
 0_2576905,New Town Ave at Legacy Hall,37.27947,-76.74232,False
 0_2576837,Monticello Ave at Publix,37.27228,-76.75924,True
 0_2576825,Richmond Rd at Tractor Supply,37.37168,-76.77476,False
-0_2577005,Richmond Rd at C&F Bank,37.37309,-76.77751,True
-0_2576824,Richmond Rd at Peninsula Mulch,37.3779,-76.79961,False
+0_2576824,Richmond Rd at Peninsula Mulch,37.3779,-76.79961,True
+0_2576913,Toano Dr at Burnt Ordinary 2,37.38077,-76.80375,False
 0_2576823,Barhamsville Rd at Old Stage Rd,37.406,-76.80906,True
 0_2576842,DePue Dr at Plumeri Park,37.289535,-76.73376,False
-0_2577083,Olde Towne Rd at Social Services,37.30801,-76.75111,True
+0_2576910,Longhill Rd at New Zion Church,37.31599,-76.78169,False
 0_2576841,Longhill Rd at Jolly Pond Vet,37.31651,-76.78803,False
 0_2576909,Centerville Rd at Fox Ridge,37.3276,-76.78896,False
 0_2576908,Centerville Rd at Adams Hunt,37.33509,-76.77492,False
 0_2576892,Centerville Rd at Opportunity Way,37.33809,-76.75826,False
 0_2576887,Centerville Rd at Harris Teeter,37.33922,-76.75609,True
+0_2576912,Centerville Rd at Adams Hunt,37.33499,-76.77566,False
 0_2576875,Old Williamsburg Rd at Lackey Clinic,37.23121,-76.55483,False
 0_2576874,Old Williamsburg Rd at Rising Sun OB,37.23274,-76.54599,True
 0_2576873,Old Williamsburg Rd at Woods of Yorktown,37.23425,-76.53737,True
@@ -82,20 +83,19 @@ stop_id,stop_name,stop_lat,stop_lon,in_core
 0_2576879,Longfellow Rd at YNWS Gate 3,37.21333,-76.58409,True
 0_2576889,Jamestown Rd at Lemon Hall,37.26844,-76.712733,True
 0_2576968,Monticello Ave at Trader Joes,37.27663,-76.74731,True
-0_2576835,Monarch Crossing at Promenade,37.25652,-76.73744,False
-0_4160743,Strawberry Plains at Midlands,37.267878,-76.740446,True
+0_2576835,Monarch Crossing at Promenade,37.25652,-76.73744,True
+0_2576917,Richmond Rd at Toano Middle,37.37791,-76.80071,False
 0_2576916,Richmond Rd at CVS,37.37246,-76.77693,True
 0_2576839,Richmond Rd at Shell,37.33908,-76.75327,True
 0_2576901,Centerville Rd at Jolly Pond Rd,37.33401,-76.78189,True
 0_2576902,Centerville Rd at Jones Dr,37.33143,-76.78512,False
 0_2576903,Centerville Rd at Longhill Station,37.32656,-76.78919,False
 0_2576904,Centerville Rd at JSG Corporation,37.32103,-76.78852,False
-0_2576833,Pilot Way at Taco Bell,37.2586334,-76.7407479,False
+0_2576833,Pilot Way at Taco Bell,37.2586334,-76.7407479,True
 0_2577091,N Boundary St at Williamsburg TC,37.2763539,-76.7082572,True
 0_3423000,Visitor Center,37.2789702,-76.6990171,True
 0_3423005,Art Museum,37.2677494,-76.7036032,True
 0_2576941,E Rochambeau Dr at Great Wolf Lodge,37.3492223,-76.7310239,True
 0_2576868,Pocahontas Trl at BG Construction,37.2316145,-76.6275286,False
 0_2576878,Merrimac Trl at VP Regional Jail,37.2157494,-76.6028955,True
-0_3423004,Williamsburg Lodge,37.2681974,-76.6999493,True
 0_2576891,Pocahontas Trl at Green Mtn Pkwy,37.2079377,-76.5999724,False

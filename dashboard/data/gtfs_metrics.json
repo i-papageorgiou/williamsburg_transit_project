@@ -1,5 +1,5 @@
 {
-  "snapshot_date": "2026-09-18",
+  "snapshot_date": "2026-09-21",
   "routes": [
     {
       "route_id": "15",
@@ -52,11 +52,11 @@
       "has_weekend_service": true
     },
     {
-      "route_id": "5",
-      "route_short_name": "5",
-      "route_long_name": "Monticello",
+      "route_id": "4",
+      "route_short_name": "4",
+      "route_long_name": "Longhill",
       "weekday_trips": 30,
-      "weekday_span_minutes": 887.0,
+      "weekday_span_minutes": 897.0,
       "saturday_trips": 30,
       "sunday_trips": 20,
       "has_weekend_service": true
@@ -72,6 +72,16 @@
       "has_weekend_service": true
     },
     {
+      "route_id": "5",
+      "route_short_name": "5",
+      "route_long_name": "Monticello",
+      "weekday_trips": 30,
+      "weekday_span_minutes": 887.0,
+      "saturday_trips": 30,
+      "sunday_trips": 20,
+      "has_weekend_service": true
+    },
+    {
       "route_id": "6",
       "route_short_name": "6",
       "route_long_name": "Jamestown",
@@ -82,31 +92,21 @@
       "has_weekend_service": true
     },
     {
-      "route_id": "7",
-      "route_short_name": "7",
-      "route_long_name": "Mooretown",
-      "weekday_trips": 30,
-      "weekday_span_minutes": 894.0,
-      "saturday_trips": 30,
-      "sunday_trips": 20,
-      "has_weekend_service": true
-    },
-    {
-      "route_id": "4",
-      "route_short_name": "4",
-      "route_long_name": "Longhill",
-      "weekday_trips": 30,
-      "weekday_span_minutes": 897.0,
-      "saturday_trips": 30,
-      "sunday_trips": 20,
-      "has_weekend_service": true
-    },
-    {
       "route_id": "3",
       "route_short_name": "3",
       "route_long_name": "Merrimac",
       "weekday_trips": 30,
       "weekday_span_minutes": 897.0,
+      "saturday_trips": 30,
+      "sunday_trips": 20,
+      "has_weekend_service": true
+    },
+    {
+      "route_id": "7",
+      "route_short_name": "7",
+      "route_long_name": "Mooretown",
+      "weekday_trips": 30,
+      "weekday_span_minutes": 894.0,
       "saturday_trips": 30,
       "sunday_trips": 20,
       "has_weekend_service": true
