@@ -109,6 +109,33 @@ That means a 30-minute poll interval has only roughly a **~33% chance** (real-ti
 
 `metrics/reliability.py` reduces the snapshot stream to per-departure records: for each scheduled departure, take the **last observation before its predicted departure time** as the best estimate of actual departure, and compute delay against the archived schedule for that date. Departures seen with `is_cancelled` become cancellations; departures that appear in the schedule but never in any snapshot become unobserved (distinguish these from cancellations — with 30-minute polling, some are simply missed).
 
+**A lead-time filter is mandatory — `is_real_time` alone does NOT mean "measured" (found 2026-09-20).** Transit sets `is_real_time=true` long before it has vehicle telemetry, and until the bus is close the "prediction" is just the timetable echoed back, producing an artificial `delay == 0`. In the first two real snapshots, the share of real-time items sitting at exactly 0.0 min scaled directly with how far out the departure was:
+
+| lead time to departure | % at exactly 0 delay |
+|---|---|
+| 0–5 min | 0.0% |
+| 5–10 min | 2.9% |
+| 10–20 min | 23.6% |
+| 20–40 min | 50.5% |
+| 40+ min | 68.1% |
+
+Counting those echoes as on-time inflated OTP — exactly the "schedule-only reading silently treated as an on-time bus" failure this plan warns against. So: **keep only observations ≤5 minutes from predicted departure**, then dedupe to the last observation per `(trip_search_key, global_stop_id, scheduled_departure_time)`.
+
+**≤5 min chosen 2026-09-20.** It is the widest cutoff that eliminates schedule echoes completely. Sensitivity across cutoffs on the first two snapshots:
+
+| cutoff | n | % exact-0 (echoes) | median | on-time | early | late |
+|---|---|---|---|---|---|---|
+| ≤20 min | 129 | 10.9% | −0.5m | 49.6% | 45.0% | 5.4% |
+| ≤10 min | 74 | 1.4% | +0.1m | 59.5% | 35.1% | 5.4% |
+| **≤5 min** | **40** | **0.0%** | **+1.0m** | **80.0%** | **10.0%** | **10.0%** |
+| ≤3 min | 27 | 0.0% | +1.5m | 81.5% | 3.7% | 14.8% |
+
+Note the cost: tightening trades sample size for cleanliness (129 → 40 observations), and the early/late split moves sharply with the cutoff. The apparent "35% early running" at ≤10 min is largely unsettled predictions drifting toward the timetable, not buses actually leaving early — it collapses to 10% once echoes are excluded. Treat the early/late split as unstable until weekday volume is in; at n=40 a single bus is 2.5 percentage points.
+
+This also means the headline `is_real_time` share (~29%) overstates usable data: of ~2,800 items across two polls, only **74** were genuinely measurable departures. Report the measurable count separately from the raw capture rate.
+
+Correct parse path (verified against real payloads): `route_departures[] → merged_itineraries[] → schedule_items[]`.
+
 Report on-time performance (standard −1/+5 minute window), delay distributions by route and hour, headway adherence on the frequent routes, and real-time coverage (`is_real_time` share, which tells you how often riders actually get a live prediction rather than a schedule guess — expected to land around the ~50% ceiling found in Phase 3's calibration, not 100%).
 
 **Do not publish reliability numbers before ~3 weeks of collection.** Anything less cannot separate a bad week from a bad route. The dashboard should ship in Phase 5 with the GTFS analyses and a visible "collecting since <date>" placeholder for the reliability panel.
@@ -117,7 +144,9 @@ Report on-time performance (standard −1/+5 minute window), delay distributions
 
 A published Artifact page (HTML), with analysis output exported to static JSON under `dashboard/data/` and baked in — no live API calls from the page, so the key is never exposed.
 
-Panels: service level by route and day type; span and frequency heatmap by hour; a coverage map with equity overlay; the reliability panel; and rider-facing quality (active alerts, wheelchair-accessible trip share from `stop_departures`, and `/v4/public/plan` results for a handful of representative origin–destination pairs such as a low-income neighborhood to the hospital, to W&M, and to the outlet-area job cluster).
+Panels: service level by route and day type; span and frequency heatmap by hour; a coverage map with equity overlay; the reliability panel; and rider-facing quality (active alerts, and `/v4/public/plan` results for a handful of representative origin–destination pairs such as a low-income neighborhood to the hospital, to W&M, and to the outlet-area job cluster).
+
+**Accessibility is not reportable — dropped 2026-09-20.** WATA does not publish wheelchair data in any form: `wheelchair_accessible` is `0` for all 2,797 observed `schedule_items`, `trips.txt` has no wheelchair column at all, and `stops.wheelchair_boarding` is null for all 614 stops. Per the GTFS spec `0` means *"no information"*, not *"not accessible"*, so any accessibility rate computed from it would be reporting absent data as a finding. The honest treatment is to state that WATA does not publish it.
 
 Load the `dataviz` skill before writing any chart code, and `artifact-design` before writing the page. Every panel must state its data source, date range, and sample scope — a dashboard citing 100 sampled stops must say so where a reader sees the number, not in a footnote.
 
