@@ -1,6 +1,7 @@
 name: Collect real-time snapshot
 
-# Polls stop_departures every 30 minutes across a generous UTC window; the
+# Polls stop_departures every 30 minutes, around the clock (see the `on:`
+# block below for what actually drives that cadence now); the
 # actual "is anything running right now" decision lives in
 # src/wata/collect.py's should_poll_now(), which checks the archived GTFS
 # calendar (calendar_dates.txt) live rather than being baked into this cron
@@ -30,12 +31,14 @@ name: Collect real-time snapshot
 # rebuild, Phase 4's plan() quality calls, and any missed-push retries.
 
 on:
-  schedule:
-    # Every 30 minutes, 09:00-03:59 UTC = 05:00-23:59 ET covering both
-    # standard and daylight time, wider than any actual service span so
-    # should_poll_now() is always the one deciding, never this schedule.
-    - cron: "0,30 9-23 * * *"
-    - cron: "0,30 0-3 * * *"
+  # No schedule: trigger. GitHub's own scheduler silently drops ticks under
+  # platform load with no run record at all - confirmed via run-history
+  # analysis (0/9 runs landed on an aligned minute, multi-hour gaps under
+  # two different cron expressions). Cadence is instead driven externally:
+  # a cron-job.org job POSTs to this repo's
+  # /actions/workflows/collect.yml/dispatches endpoint every 30 minutes,
+  # firing this same workflow_dispatch trigger. should_poll_now() still
+  # decides whether that tick actually spends a call.
   workflow_dispatch: {}
 
 concurrency:
