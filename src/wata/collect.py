@@ -53,7 +53,11 @@ POLL_LOOKAHEAD_MINUTES = 30
 
 
 def snapshot_path(when: dt.datetime | None = None) -> Path:
-    when = when or dt.datetime.now()
+    # Must bucket by the same SERVICE_TZ calendar date should_poll_now()
+    # reasons about, not the runner's local time (UTC on GitHub Actions) --
+    # otherwise every evening poll after 8pm ET (past UTC midnight) lands
+    # in a file dated for the next calendar day.
+    when = when.astimezone(SERVICE_TZ) if when else dt.datetime.now(SERVICE_TZ)
     RAW_SNAPSHOT_DIR.mkdir(parents=True, exist_ok=True)
     return RAW_SNAPSHOT_DIR / f"{when.date().isoformat()}.ndjson.gz"
 
