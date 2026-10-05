@@ -1,5 +1,5 @@
-"""Run the GTFS-only metrics (Phase 1-2) and write outputs to data/processed/
-and dashboard/data/.
+"""Run the GTFS-only metrics (Phase 1-2) and the snapshot-based cancellation
+tracker, and write outputs to data/processed/ and dashboard/data/.
 
 Usage: python -m wata.pipeline
 """
@@ -11,8 +11,10 @@ from pathlib import Path
 
 from wata.gtfs import GtfsFeed, REPO_ROOT
 from wata.metrics.access import coverage_summary, walksheds
+from wata.metrics.quality import cancellations_by_day, recurring_cancellations, trip_cancellations
 from wata.metrics.service import all_route_spans, service_summary
 from wata.sampling import poll_stop_ids, select_core_stops
+from wata.snapshots import iter_snapshots, schedule_items
 
 PROCESSED_DIR = REPO_ROOT / "data" / "processed"
 DASHBOARD_DATA_DIR = REPO_ROOT / "dashboard" / "data"
@@ -44,6 +46,10 @@ def main() -> None:
     sample_summary["in_core"] = sample_summary["stop_id"].isin(core)
     sample_summary.to_csv(PROCESSED_DIR / "stop_sample.csv", index=False)
 
+    trips = trip_cancellations(schedule_items(iter_snapshots()))
+    cancellations_by_day(trips).to_csv(PROCESSED_DIR / "cancellations_by_day.csv", index=False)
+    recurring_cancellations(trips).to_csv(PROCESSED_DIR / "recurring_cancellations.csv", index=False)
+
     dashboard_payload = {
         "snapshot_date": feed.snapshot_date.isoformat(),
         "routes": json.loads(summary.to_json(orient="records")),
@@ -66,6 +72,8 @@ def main() -> None:
     print(f"Wrote {PROCESSED_DIR / 'route_spans_by_service_id.csv'}")
     print(f"Wrote {PROCESSED_DIR / 'walksheds.geojson'}")
     print(f"Wrote {PROCESSED_DIR / 'stop_sample.csv'}")
+    print(f"Wrote {PROCESSED_DIR / 'cancellations_by_day.csv'}")
+    print(f"Wrote {PROCESSED_DIR / 'recurring_cancellations.csv'}")
     print(f"Wrote {DASHBOARD_DATA_DIR / 'gtfs_metrics.json'}")
     print(f"Coverage by frequency tier (km^2): {coverage}")
 

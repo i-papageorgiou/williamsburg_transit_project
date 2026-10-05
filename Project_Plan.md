@@ -55,7 +55,7 @@ src/wata/
     service.py              # span, frequency, trips per day
     access.py               # walksheds + ACS equity join
     reliability.py          # OTP / headway adherence from snapshots
-    quality.py              # alerts, accessibility, O-D trip plans
+    quality.py              # cancellations, alerts, O-D trip plans
 data/
   gtfs/YYYY-MM-DD/          # archived feed snapshots (committed)
   raw/YYYY-MM-DD.ndjson.gz  # raw API snapshots (committed)
@@ -146,7 +146,7 @@ A published Artifact page (HTML), with analysis output exported to static JSON u
 
 Panels: service level by route and day type; span and frequency heatmap by hour; a coverage map with equity overlay; the reliability panel; and rider-facing quality (active alerts, and `/v4/public/plan` results for a handful of representative origin–destination pairs such as a low-income neighborhood to the hospital, to W&M, and to the outlet-area job cluster).
 
-**Accessibility is not reportable — dropped 2026-09-20.** WATA does not publish wheelchair data in any form: `wheelchair_accessible` is `0` for all 2,797 observed `schedule_items`, `trips.txt` has no wheelchair column at all, and `stops.wheelchair_boarding` is null for all 614 stops. Per the GTFS spec `0` means *"no information"*, not *"not accessible"*, so any accessibility rate computed from it would be reporting absent data as a finding. The honest treatment is to state that WATA does not publish it.
+**Accessibility is not reportable — dropped 2026-09-20.** WATA does not publish wheelchair data in any form: `wheelchair_accessible` is `0` for all 2,797 observed `schedule_items` (re-confirmed 2026-10-05: still `0` on all 611,816 items from two weeks of collection), `trips.txt` has no wheelchair column at all, and `stops.wheelchair_boarding` is null for all 614 stops. Per the GTFS spec `0` means *"no information"*, not *"not accessible"*, so any accessibility rate computed from it would be reporting absent data as a finding. The honest treatment is to state that WATA does not publish it.
 
 Load the `dataviz` skill before writing any chart code, and `artifact-design` before writing the page. Every panel must state its data source, date range, and sample scope — a dashboard citing 100 sampled stops must say so where a reader sees the number, not in a footnote.
 
