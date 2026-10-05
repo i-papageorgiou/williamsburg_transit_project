@@ -22,6 +22,23 @@ weekdays), so cron fires generously and this checks calendar_dates.txt live
 to skip calls outside actual service hours — a cron schedule can't see the
 GTFS calendar, so encoding spans into cron would drift at every schedule
 change and break twice a year at DST.
+
+Each run polls at a uniformly random point of the 30-minute clock cycle
+instead of always at :00/:30. WATA's timetables repeat every 30 or 60
+minutes, so fixed poll times meant every stop was seen at the same point
+relative to its schedule every day, and whether a late bus got measured
+depended on that phase rather than on chance. Random timing is what makes
+wata.metrics.reliability's estimates unbiased.
+
+The random part is the *phase* (seconds past :00 or :30), drawn from the
+OS entropy source. The run then waits for that phase's next occurrence.
+Runner start-up delay therefore changes only how long it waits, never
+where in the cycle the poll lands. Drawing a random *wait* from start-up
+instead would leave the first minutes of every half-hour under-sampled
+(simulated: about half the expected polls in the first 3 minutes). Each
+snapshot records its `poll_target`, and wata.metrics.reliability checks
+the realized phases for uniformity. It costs no API calls, only runner
+minutes (free on a public repo).
 """
 
 from __future__ import annotations
@@ -30,7 +47,10 @@ import datetime as dt
 import gzip
 import json
 import os
+import random
+import time
 from pathlib import Path
+from typing import Callable
 from zoneinfo import ZoneInfo
 
 from wata.gtfs import GtfsFeed, REPO_ROOT
@@ -50,6 +70,14 @@ SERVICE_TZ = ZoneInfo("America/New_York")
 # worth its call. Matches the collector's own polling interval (30 min) so
 # consecutive polls together cover the full span with no gap.
 POLL_LOOKAHEAD_MINUTES = 30
+
+# The poll cycle. Polls are spread uniformly over it. A wait can approach
+# a full cycle, so a run may overrun the next dispatch; the workflow's
+# concurrency group queues that run rather than overlapping it.
+POLL_CYCLE_SECONDS = 30 * 60
+
+# OS entropy (os.urandom): no seed shared or reused across runs.
+_ENTROPY = random.SystemRandom()
 
 
 def snapshot_path(when: dt.datetime | None = None) -> Path:
@@ -77,7 +105,12 @@ def next_poll_index(path: Path | None = None) -> int:
     return current
 
 
-def should_poll_now(feed: GtfsFeed, when: dt.datetime | None = None) -> bool:
+def should_poll_now(
+    feed: GtfsFeed,
+    when: dt.datetime | None = None,
+    *,
+    lookahead_minutes: float = POLL_LOOKAHEAD_MINUTES,
+) -> bool:
     """Whether right now is worth spending an API call on.
 
     Service spans vary sharply by day type (weekday 05:54-22:57, Saturday
@@ -87,7 +120,23 @@ def should_poll_now(feed: GtfsFeed, when: dt.datetime | None = None) -> bool:
     are handled automatically, for free, the moment the feed is refreshed.
     """
     when = when.astimezone(SERVICE_TZ) if when else dt.datetime.now(SERVICE_TZ)
-    return feed.has_departure_within(when, lookahead_minutes=POLL_LOOKAHEAD_MINUTES)
+    return feed.has_departure_within(when, lookahead_minutes=lookahead_minutes)
+
+
+def random_poll_target(now: dt.datetime, rng: random.Random | None = None) -> dt.datetime:
+    """When to poll: a uniformly random phase of the 30-minute cycle, at
+    its first occurrence at or after `now`.
+
+    Worked in UTC. ET's offsets are whole hours, so the :00/:30 grid is
+    the same in both, and UTC has no DST gaps.
+    """
+    now = now.astimezone(dt.timezone.utc)
+    phase = dt.timedelta(seconds=(rng or _ENTROPY).uniform(0, POLL_CYCLE_SECONDS))
+    cycle_start = now.replace(minute=now.minute - now.minute % 30, second=0, microsecond=0)
+    target = cycle_start + phase
+    if target < now:
+        target += dt.timedelta(seconds=POLL_CYCLE_SECONDS)
+    return target
 
 
 def collect_one_snapshot(client: TransitApiClient, global_stop_ids: list[str]) -> dict:
@@ -108,7 +157,7 @@ def append_snapshot(record: dict, path: Path | None = None) -> None:
         f.write(json.dumps(record) + "\n")
 
 
-def run() -> None:
+def run(*, sleep_fn: Callable[[float], None] = time.sleep) -> None:
     api_key = os.environ.get("TRANSIT_API_KEY")
     if not api_key:
         raise SystemExit(
@@ -125,12 +174,27 @@ def run() -> None:
         )
 
     feed = GtfsFeed.load()
+    # Checked before the wait (over the whole window the poll could land in,
+    # so overnight runs exit without idling a runner) and again after it,
+    # since service may have ended during the wait.
+    max_wait_minutes = POLL_CYCLE_SECONDS / 60
+    if not should_poll_now(feed, lookahead_minutes=POLL_LOOKAHEAD_MINUTES + max_wait_minutes):
+        print("Outside WATA service hours — skipping without spending a call.")
+        return
+
+    # Slow setup goes before the wait so the call fires on target.
+    core = select_core_stops(feed)
+
+    target = random_poll_target(dt.datetime.now(dt.timezone.utc))
+    wait = max(0.0, (target - dt.datetime.now(dt.timezone.utc)).total_seconds())
+    print(f"Waiting {wait / 60:.1f} min to poll at {target.isoformat()} (random phase of the cycle).")
+    sleep_fn(wait)
+
     if not should_poll_now(feed):
         print("Outside WATA service hours (or no scheduled departure in the "
               f"next {POLL_LOOKAHEAD_MINUTES} min) — skipping without spending a call.")
         return
 
-    core = select_core_stops(feed)
     poll_index = next_poll_index()
     sample = poll_stop_ids(feed, poll_index, core_stop_ids=core)
 
@@ -142,6 +206,9 @@ def run() -> None:
     client = TransitApiClient(api_key)
     record = collect_one_snapshot(client, global_stop_ids)
     record["poll_index"] = poll_index
+    # Marks this poll as randomly timed; reliability uses only these, and
+    # checks fetched_at landed on this target.
+    record["poll_target"] = target.isoformat()
     append_snapshot(record)
     print(
         f"Collected snapshot #{poll_index} for {len(global_stop_ids)} stops "

@@ -80,6 +80,22 @@ def latest_snapshot_dir(archive_dir: Path | None = None) -> Path:
     return snapshots[-1]
 
 
+def snapshot_dir_for(date: dt.date, archive_dir: Path | None = None) -> Path:
+    """Return the feed that was in effect on `date`: the latest archive
+    downloaded on or before it.
+
+    Real-time observations must be compared against the schedule that was
+    live that day, not whatever was downloaded most recently.
+    """
+    archive_dir = archive_dir or GTFS_ARCHIVE_DIR
+    eligible = sorted(
+        p for p in archive_dir.iterdir() if p.is_dir() and dt.date.fromisoformat(p.name) <= date
+    )
+    if not eligible:
+        raise FileNotFoundError(f"No GTFS feed archived under {archive_dir} on or before {date}.")
+    return eligible[-1]
+
+
 @dataclass
 class GtfsFeed:
     """The WATA GTFS static feed as a set of DataFrames."""

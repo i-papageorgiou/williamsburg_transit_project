@@ -1,5 +1,6 @@
 """Run the GTFS-only metrics (Phase 1-2) and the snapshot-based cancellation
-tracker, and write outputs to data/processed/ and dashboard/data/.
+and lateness metrics, and write outputs to data/processed/ and
+dashboard/data/.
 
 Usage: python -m wata.pipeline
 """
@@ -12,9 +13,15 @@ from pathlib import Path
 from wata.gtfs import GtfsFeed, REPO_ROOT
 from wata.metrics.access import coverage_summary, walksheds
 from wata.metrics.quality import cancellations_by_day, recurring_cancellations, trip_cancellations
+from wata.metrics.reliability import (
+    departure_checks,
+    lateness_curve,
+    lateness_summary,
+    poll_timing_check,
+)
 from wata.metrics.service import all_route_spans, service_summary
 from wata.sampling import poll_stop_ids, select_core_stops
-from wata.snapshots import iter_snapshots, schedule_items
+from wata.snapshots import iter_snapshots, polled_stops, schedule_items
 
 PROCESSED_DIR = REPO_ROOT / "data" / "processed"
 DASHBOARD_DATA_DIR = REPO_ROOT / "dashboard" / "data"
@@ -46,9 +53,24 @@ def main() -> None:
     sample_summary["in_core"] = sample_summary["stop_id"].isin(core)
     sample_summary.to_csv(PROCESSED_DIR / "stop_sample.csv", index=False)
 
-    trips = trip_cancellations(schedule_items(iter_snapshots()))
+    snapshots = list(iter_snapshots())
+    items = schedule_items(snapshots)
+    trips = trip_cancellations(items)
     cancellations_by_day(trips).to_csv(PROCESSED_DIR / "cancellations_by_day.csv", index=False)
     recurring_cancellations(trips).to_csv(PROCESSED_DIR / "recurring_cancellations.csv", index=False)
+
+    # Uses only randomly timed polls (collected from 2026-10-05 on), so
+    # these stay empty until they accumulate; a route needs 10+ service
+    # days before it gets a number. Not published to the dashboard yet.
+    polls = polled_stops(snapshots)
+    timing = poll_timing_check(polls)
+    timing.to_csv(PROCESSED_DIR / "poll_timing_check.csv", index=False)
+    checks = departure_checks(items, polls)
+    lateness_summary(checks).to_csv(PROCESSED_DIR / "lateness_network.csv", index=False)
+    lateness_summary(checks, ["route_short_name"]).to_csv(
+        PROCESSED_DIR / "lateness_by_route.csv", index=False
+    )
+    lateness_curve(checks).to_csv(PROCESSED_DIR / "lateness_curve.csv", index=False)
 
     dashboard_payload = {
         "snapshot_date": feed.snapshot_date.isoformat(),
@@ -74,6 +96,12 @@ def main() -> None:
     print(f"Wrote {PROCESSED_DIR / 'stop_sample.csv'}")
     print(f"Wrote {PROCESSED_DIR / 'cancellations_by_day.csv'}")
     print(f"Wrote {PROCESSED_DIR / 'recurring_cancellations.csv'}")
+    print(f"Wrote {PROCESSED_DIR / 'lateness_network.csv'}, lateness_by_route.csv, lateness_curve.csv "
+          f"({len(checks)} departure checks from randomly timed polls)")
+    print(f"Wrote {PROCESSED_DIR / 'poll_timing_check.csv'}")
+    if (timing["uniform"] == False).any():  # noqa: E712 - None means no polls yet
+        print("WARNING: randomized poll times are not uniform over the cycle; "
+              "do not trust the lateness estimates until this is explained.")
     print(f"Wrote {DASHBOARD_DATA_DIR / 'gtfs_metrics.json'}")
     print(f"Coverage by frequency tier (km^2): {coverage}")
 

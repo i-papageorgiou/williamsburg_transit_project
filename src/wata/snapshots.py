@@ -19,6 +19,10 @@ import pandas as pd
 
 from wata.collect import RAW_SNAPSHOT_DIR, SERVICE_TZ
 
+# How far a randomly timed poll's response may land from its target and
+# still count as random. The call itself takes a few seconds.
+POLL_ON_TARGET_SECONDS = 120
+
 SCHEDULE_ITEM_COLUMNS = [
     "fetched_at",
     "poll_index",
@@ -43,6 +47,39 @@ def iter_snapshots(paths: Iterable[Path] | None = None) -> Iterator[dict]:
             for line in f:
                 if line.strip():
                     yield json.loads(line)
+
+
+def polled_stops(snapshots: Iterable[dict]) -> pd.DataFrame:
+    """One row per (poll, stop the poll asked about), whether or not
+    anything was listed there.
+
+    `randomized` marks polls taken at a random phase of the 30-minute
+    cycle: the collector recorded a `poll_target`, and the response came
+    back within POLL_ON_TARGET_SECONDS of it. Earlier polls were always at
+    :00/:30. A poll that missed its target is not counted as random,
+    because its timing then reflects whatever delayed it.
+    """
+    rows = []
+    for snap in snapshots:
+        fetched_at = dt.datetime.fromisoformat(snap["fetched_at"])
+        target = snap.get("poll_target")
+        randomized = (
+            target is not None
+            and abs((fetched_at - dt.datetime.fromisoformat(target)).total_seconds())
+            <= POLL_ON_TARGET_SECONDS
+        )
+        rows.extend(
+            {
+                "fetched_at": fetched_at,
+                "poll_index": snap.get("poll_index"),
+                "randomized": randomized,
+                "global_stop_id": stop_id,
+            }
+            for stop_id in snap["global_stop_ids"]
+        )
+    polls = pd.DataFrame(rows, columns=["fetched_at", "poll_index", "randomized", "global_stop_id"])
+    polls["fetched_at"] = pd.to_datetime(polls["fetched_at"], utc=True).dt.tz_convert(SERVICE_TZ)
+    return polls
 
 
 def schedule_items(snapshots: Iterable[dict]) -> pd.DataFrame:

@@ -29,6 +29,14 @@ name: Collect real-time snapshot
 # ≈221/week, ≈960/month — leaving headroom under the cap (itself lowered to
 # 1,400 in src/wata/transit_api.py as a safety margin) for the mapping
 # rebuild, Phase 4's plan() quality calls, and any missed-push retries.
+#
+# Each run polls at a uniformly random phase of the 30-minute cycle (see
+# src/wata/collect.py). It draws the phase from OS entropy, then waits for
+# its next occurrence, which can take up to 30 min. Fixed :00/:30 times
+# sampled every stop at the same point in its timetable each day, which
+# biased the delay estimates. The wait costs runner minutes only (free on a
+# public repo), never API calls. A run that overruns the next dispatch
+# makes the concurrency group below queue that dispatch; nothing is lost.
 
 on:
   # No schedule: trigger. GitHub's own scheduler silently drops ticks under
@@ -56,6 +64,8 @@ permissions:
 jobs:
   collect:
     runs-on: ubuntu-latest
+    # Up to 30 min of random wait plus setup and push; anything longer is hung.
+    timeout-minutes: 45
     steps:
       - uses: actions/checkout@v4
 

@@ -101,44 +101,53 @@ Resulting spend: weekday ~34 polls/day, Saturday ~31/day, Sunday ~20/day ≈ 221
 
 A persisted `poll_index` (`data/processed/poll_index.json`) advances the rotation across runs — incremented only on an actual poll, never on a run skipped by `should_poll_now()` — since each GitHub Actions run is a fresh checkout. Appends raw responses as gzipped NDJSON, one file per day, committed back by the workflow, which retries with a rebase on a push conflict rather than silently dropping an already-paid-for snapshot.
 
-**Calibration (done) — and a real limitation this exposes.** A live call at the transit-center hub (Saturday 9:04pm ET; most routes had already ended Saturday service — only Route 15 was still running, consistent with Phase 2's finding that it alone carries meaningful weekend evening service) showed `is_real_time` only turns `true` in roughly the last ~10 minutes before departure: Route 15's two imminent trips read `is_real_time=true` at 1.4 and 6.5 minutes out, while every other returned item — including Route 15's own later trips — was still schedule-only (`is_real_time=false`) up to 20+ hours out.
+**Randomized poll timing (from 2026-10-05).** With polls fixed at :00/:30, WATA's 30/60-minute timetables meant every stop was seen at the same point in its schedule every day. That made which buses got measured depend on their delay (see Phase 4).
+- **How each poll is timed.** Each run draws a uniformly random *phase* of the 30-minute cycle from OS entropy (`random.SystemRandom`). It then waits for that phase's next occurrence and records it as `poll_target`.
+- **Why a phase, not a wait.** Runner start-up delay only changes how long the run waits, never where the poll lands. A random *wait* counted from start-up would under-sample the first minutes of every half-hour; simulated, about half the expected polls fell in the first 3 minutes.
+- **Which polls count.** A poll counts as random only if its response landed within 2 minutes of its target.
+- **The check.** `reliability.poll_timing_check` runs a Kolmogorov–Smirnov test on the realized phases over the 30- and 60-minute cycles each pipeline run. It warns at p < 0.001; the old :00/:30 polls give p = 0.
+- **Cost.** The wait is runner minutes only (the repo is public), never API calls. A run that overruns the next dispatch is queued by the workflow's concurrency group.
 
-That means a 30-minute poll interval has only roughly a **~33% chance** (real-time window ÷ poll interval ≈ 10/30) of ever catching any given trip's one real-time-flagged reading — the rest get scheduled-time-only, which is not a delay measurement. This is disclosed as a real limitation rather than solved: tightening the interval for high-frequency routes specifically would need a second call per poll on top of the core+rotation call, and the budget has no room for that while also sustaining every day of the month (a 20-minute interval alone would exceed 1,500 calls/month by day 29). The reliability panel should report this expected ~33% capture rate next to its OTP numbers, and treat a longer collection period (more weeks) as the way to recover statistical power — not a shorter interval the budget can't afford.
+**Calibration — superseded 2026-10-05.** A single call on 2026-09-19 suggested `is_real_time` only turns true in the last ~10 minutes before departure, implying a ~33% capture rate at 30-minute polling. Two weeks of collection show otherwise: **~99% of departures within the next 4 hours carry a real-time prediction**, and every scheduled trip is seen every day. How often we see a prediction is not the limit on reliability data. What matters is what those predictions can and cannot show (Phase 4).
 
 ## Phase 4 — Reliability analysis
 
-`metrics/reliability.py` reduces the snapshot stream to per-departure records: for each scheduled departure, take the **last observation before its predicted departure time** as the best estimate of actual departure, and compute delay against the archived schedule for that date. Departures seen with `is_cancelled` become cancellations; departures that appear in the schedule but never in any snapshot become unobserved (distinguish these from cancellations — with 30-minute polling, some are simply missed).
+**Method revised 2026-10-05: accuracy over a flattering number.** The 2026-09-20 rule took the last prediction made ≤5 minutes before departure. It was tested against two weeks of snapshots (9/22–10/5) and the archived GTFS, and replaced, for these reasons:
 
-**A lead-time filter is mandatory — `is_real_time` alone does NOT mean "measured" (found 2026-09-20).** Transit sets `is_real_time=true` long before it has vehicle telemetry, and until the bus is close the "prediction" is just the timetable echoed back, producing an artificial `delay == 0`. In the first two real snapshots, the share of real-time items sitting at exactly 0.0 min scaled directly with how far out the departure was:
+| Finding | Evidence | Consequence |
+|---|---|---|
+| No observed departures exist | A trip leaves a stop's listing when its *predicted* departure passes (never >0.5 min after) | Every number is a Transit/CAD-AVL prediction; the most accurate information is that disappearance, i.e. the prediction at the moment the bus leaves |
+| Predictions drift later as the bus approaches | Same stop, ~30 min out → 0–5 min out: mean revision +1.5 min, p90 +7.6 | Longer-lead predictions understate lateness |
+| Picking readings by prediction lead biases the sample | Mid-route late share >5 min: 12.4% (≤3 min), 7.5% (≤5), 5.6% (≤10) | Whether a bus is measured depended on its own delay |
+| Fixed :00/:30 polls lock to the timetable | WATA timetables repeat every 30/60 min, so each stop was seen at the same point in its schedule daily; checks per minute ranged 119–1,461 | Fixed by randomized poll timing (Phase 3) |
+| One time per stop | `arrival_time == departure_time` on every item, and in GTFS | Holding at timepoints is invisible; early running only as an upper bound |
+| Predicted early ≠ departed early | 31% of ≤5-min predictions said >1 min early, but only ~2.5% of trips actually vanished >1 min before schedule | "Early" predictions mostly didn't happen |
+| Origins are clamped, terminals are arrivals | First stop: 21.5% exactly 0, 0% early | Only mid-route stops are measured |
+| Feed's scheduled times are GTFS rounded to the minute; predictions carry seconds | All 621,506 items within ±30 s of a `stop_times` row; `rt_trip_id` = GTFS `trip_id` | Delay is measured against the exact GTFS time in the archive in effect that day (`gtfs.snapshot_dir_for`) |
 
-| lead time to departure | % at exactly 0 delay |
-|---|---|
-| 0–5 min | 0.0% |
-| 5–10 min | 2.9% |
-| 10–20 min | 23.6% |
-| 20–40 min | 50.5% |
-| 40+ min | 68.1% |
+**The estimator (`metrics/reliability.py`).**
+- **Each check.** Take each randomly timed poll *t*, each polled mid-route stop, and each departure scheduled there at *S* with *u = t − S* in [−10, 30] min. If the trip is still listed, its predicted departure is still ahead, so delay > *u*; otherwise delay ≤ *u*.
+- **Why it's unbiased.** Departures are enumerated from GTFS, not from what was listed, so departed buses are counted. Selection depends only on the schedule, and *t* is random, so the share still listed at *u* estimates P(delay > *u*).
+- **The fit.** That share is fitted as a non-increasing curve (pool-adjacent-violators, the standard estimator for "status at a random time" data).
+- **What it reports.**
+  - P(delay > 5 min), with a 95% CI from a bootstrap over service days.
+  - P(delay > 10 min).
+  - An early-departure upper bound.
+  - On-time (−1/+5) as a range, never a single number.
+  - `monotone_adjustment`, a check that the timing really is random.
+- **What's excluded.**
+  - Trip-days that were ever flagged cancelled (cancellations are counted separately in `quality.py`).
+  - Trip-days with no real-time prediction (untracked trips vanish at their scheduled time and would read as on time).
+- **Minimum data.** Groups with fewer than 300 checks or 10 service days get `insufficient_data`, not a number.
+- **Tested.** A simulation recovers a known 20% late share to within 2 points.
 
-Counting those echoes as on-time inflated OTP — exactly the "schedule-only reading silently treated as an on-time bus" failure this plan warns against. So: **keep only observations ≤5 minutes from predicted departure**, then dedupe to the last observation per `(trip_search_key, global_stop_id, scheduled_departure_time)`.
+**Indicative only, not publishable.** Run on the fixed-time polls, the estimator gives 16.4% of mid-route departures >5 min late (CI 13–19%) and ~2.5% leaving >1 min early. That data is the phase-locked kind this method exists to avoid, so these numbers only motivate the change; they are not results.
 
-**≤5 min chosen 2026-09-20.** It is the widest cutoff that eliminates schedule echoes completely. Sensitivity across cutoffs on the first two snapshots:
+Outputs are written by `wata.pipeline` to `data/processed/lateness_network.csv`, `lateness_by_route.csv` and `lateness_curve.csv`, using randomized polls only.
 
-| cutoff | n | % exact-0 (echoes) | median | on-time | early | late |
-|---|---|---|---|---|---|---|
-| ≤20 min | 129 | 10.9% | −0.5m | 49.6% | 45.0% | 5.4% |
-| ≤10 min | 74 | 1.4% | +0.1m | 59.5% | 35.1% | 5.4% |
-| **≤5 min** | **40** | **0.0%** | **+1.0m** | **80.0%** | **10.0%** | **10.0%** |
-| ≤3 min | 27 | 0.0% | +1.5m | 81.5% | 3.7% | 14.8% |
+**Do not publish reliability numbers before ~3 weeks of randomized polls (from 2026-10-05, so ~2026-10-26).** Anything less cannot separate a bad week from a bad route. The dashboard should ship in Phase 5 with the GTFS analyses and a visible "collecting since <date>" placeholder for the reliability panel.
 
-Note the cost: tightening trades sample size for cleanliness (129 → 40 observations), and the early/late split moves sharply with the cutoff. The apparent "35% early running" at ≤10 min is largely unsettled predictions drifting toward the timetable, not buses actually leaving early — it collapses to 10% once echoes are excluded. Treat the early/late split as unstable until weekday volume is in; at n=40 a single bus is 2.5 percentage points.
-
-This also means the headline `is_real_time` share (~29%) overstates usable data: of ~2,800 items across two polls, only **74** were genuinely measurable departures. Report the measurable count separately from the raw capture rate.
-
-Correct parse path (verified against real payloads): `route_departures[] → merged_itineraries[] → schedule_items[]`.
-
-Report on-time performance (standard −1/+5 minute window), delay distributions by route and hour, headway adherence on the frequent routes, and real-time coverage (`is_real_time` share, which tells you how often riders actually get a live prediction rather than a schedule guess — expected to land around the ~50% ceiling found in Phase 3's calibration, not 100%).
-
-**Do not publish reliability numbers before ~3 weeks of collection.** Anything less cannot separate a bad week from a bad route. The dashboard should ship in Phase 5 with the GTFS analyses and a visible "collecting since <date>" placeholder for the reliability panel.
+Out of scope for now: headway adherence (needs consecutive-trip pairing) and origin pull-out lateness (origin predictions are clamped to the schedule).
 
 ## Phase 5 — Published dashboard
 
@@ -156,13 +165,15 @@ Load the `dataviz` skill before writing any chart code, and `artifact-design` be
 - **Stop mapping (done):** all 303 served stops resolved to a `global_stop_id`, 0 unresolved, in 65 clustered `nearby_stops` calls; spot-checked against `stops.txt` via the exact `raw_stop_id` match.
 - **Budget guard:** unit-test that the client refuses the call that would exceed the monthly ledger, and that it sustains ≤5 calls/minute.
 - **Collector:** run one manual snapshot, confirm the NDJSON parses and that `scheduled_departure_time` values line up with GTFS for the same stop and time. Then confirm the Actions cron produces a full day's file unattended.
-- **Reliability sanity:** delay distribution should center near zero with a right tail. A symmetric distribution centered well below zero means the "last prediction" extraction is wrong, not that buses run early.
+- **Reliability sanity:** on randomized polls, the raw still-listed shares should fall steadily with *u* (`monotone_adjustment` near zero), and checks should be spread roughly evenly across the minutes of *u*. Uneven counts or a large adjustment mean poll timing isn't random, not that buses behave oddly.
 - **Access metrics:** cross-check that total population within any walkshed is plausible against the area's Census total — an implausibly high number usually means a projection or CRS error in the buffering.
 - **Dashboard:** publish, open the URL, verify it renders at phone width and that every panel reports its date range.
 
 ## Principal risks
 
 - **The free tier (1,500 calls/month) is the permanent ceiling, not a temporary one.** Swiftly is not being pursued, so there is no fallback path if this turns out to be too little. Phases 1, 2, and most of 5 are unaffected regardless.
-- **Reliability is prediction-based, not observed, and only ~33% of trips get even that.** Calibration showed `is_real_time` populates only in roughly the last 10 minutes before departure; at 30-minute polling, only about a third of trips will have a real-time-flagged reading at all, the rest just a schedule guess. Label both caveats on the dashboard, not just a footnote.
+- **Reliability is prediction-based, not observed.** A "departure" is the moment the feed's prediction says the bus left; there is no independent record of buses passing stops. Label this on the dashboard, not in a footnote.
+- **Early running is not measurable.** The feed has one time per stop, so a bus holding at a timepoint is indistinguishable from one leaving early. Early departures are reported only as an upper bound, and on-time performance only as a range.
+- **The estimator depends on random poll timing.** If polls stop landing at uniformly random phases (e.g. the random-phase wait is removed, or polls routinely miss their target), the estimates become biased again. `poll_timing_check` (the KS test on poll phases) is the direct check; `monotone_adjustment` is a secondary one.
 - **GTFS feed churn.** Schedules change and the feed window is only a month; archiving is what protects past measurements.
 - **Core+rotation sampling bias.** The ~48-stop core is fixed every poll; the rotating ~52 slots reach each of the other ~255 stops roughly once per 5-poll cycle (~1.5 hours). A reliability number for a rotating-only stop rests on far fewer observations than one for a core stop — state the sample composition wherever a reliability number appears, not just "100 stops."
