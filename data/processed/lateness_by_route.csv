@@ -1,0 +1,13 @@
+route_short_name,checks,service_days,core_share,first_date,last_date,status
+1,93,1,0.333,2026-10-05,2026-10-05,insufficient_data
+11,11,1,0.545,2026-10-05,2026-10-05,insufficient_data
+12,82,1,0.451,2026-10-05,2026-10-05,insufficient_data
+15,92,1,0.783,2026-10-05,2026-10-05,insufficient_data
+2,92,1,0.446,2026-10-05,2026-10-05,insufficient_data
+3,36,1,0.333,2026-10-05,2026-10-05,insufficient_data
+4,43,1,0.488,2026-10-05,2026-10-05,insufficient_data
+5,46,1,0.5,2026-10-05,2026-10-05,insufficient_data
+6,43,1,0.744,2026-10-05,2026-10-05,insufficient_data
+7,34,1,0.412,2026-10-05,2026-10-05,insufficient_data
+8,48,1,0.604,2026-10-05,2026-10-05,insufficient_data
+9,43,1,0.488,2026-10-05,2026-10-05,insufficient_data
