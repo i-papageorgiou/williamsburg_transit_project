@@ -183,3 +183,4 @@ cython_debug/
 
 # Project planning doc (internal, not part of the published project)
 Project_Plan.md
+/analysis
