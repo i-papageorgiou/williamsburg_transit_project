@@ -1,0 +1,615 @@
+stop_id,stop_code,stop_name,stop_desc,stop_lat,stop_lon,zone_id,location_type,parent_station,wheelchair_boarding,vehicle_type
+0_2616310,2006,School of ED,,37.278658,-76.723472,,0,1_2006,,3
+0_2616314,2004,Kaplan Lot,,37.274779,-76.720239,,0,1_2004,,3
+0_2576828,1080,Kaplan Arena,,37.274688,-76.720189,,0,1_1080,,3
+0_2616311,2001,Jones Hall,,37.267694,-76.717646,,0,1_2001,,3
+0_2616312,2003,Yates Lot,,37.271992,-76.719196,,0,1_2003,,3
+0_2616309,2005,Lot 4,,37.280161,-76.723283,,0,1_2005,,3
+0_2577057,1089,WM Grad Plex,,37.2637699,-76.7052853,,0,1_1089,,3
+0_34236AH,2301,Wake Dr,,37.2711388,-76.7195315,,0,1_2301,,3
+0_2618103,2002,Small Hall,,37.269007,-76.717628,,0,1_2002,,3
+0_2576927,1081,Commons Dining,,37.27212,-76.7192,,0,1_1081,,3
+0_4160750,2600,Events Center,,37.2813754,-76.6964359,,0,1_2600,,3
+0_4160751,2601,Events Center,,37.2813432,-76.696483,,0,1_2601,,3
+0_2577094,1038,Richmond Rd at Food Lion,,37.2808,-76.71872,,0,1_1038,,3
+0_2576862,1034,Richmond Rd at Richmond Hall,,37.27866,-76.71665,,0,1_1034,,3
+0_2577058,1086,Jamestown Rd at Indian Springs,,37.26753,-76.71425,,0,1_1086,,3
+0_2576834,1087,Jamestown Rd at Cary St,,37.268308,-76.712646,,0,1_1087,,3
+0_2576906,1088,Jamestown Rd at Campus Center,,37.26979,-76.70909,,0,1_1088,,3
+0_2576940,1039,York St at Patrick Henry,,37.27011,-76.68767,,0,1_1039,,3
+0_2576939,1040,York St at Quarterpath Place,,37.26765,-76.68455,,0,1_1040,,3
+0_2577069,1041,York St at The Flats,,37.26639,-76.68138,,0,1_1041,,3
+0_2577068,1042,Pocahontas Trl at Fort Magruder,,37.26423,-76.67867,,0,1_1042,,3
+0_2576929,1043,Pocahontas Trl at Country Inn,,37.26005,-76.67358,,0,1_1043,,3
+0_4160745,4160745,Garage,,37.2566044,-76.6718033,,0,1_4160745,,3
+0_2576844,1103,Merrimac Trl at Duffie Dr,,37.26411,-76.67408,,0,1_1103,,3
+0_2576870,1070,Pocahontas Trl at BG Bavaria Lot,,37.24421,-76.65593,,0,1_1070,,3
+0_2577070,1071,Pocahontas Trl at Wendys,,37.24617,-76.65761,,0,1_1071,,3
+0_2577106,1076,Pocahontas Trl at WATA,,37.25756,-76.67,,0,1_1076,,3
+0_2576854,1005,Richmond Rd at VA Peanuts,,37.28604,-76.72082,,0,1_1005,,3
+0_2577087,1006,Richmond Rd at The Jefferson,,37.28958,-76.72235,,0,1_1006,,3
+0_2576853,1007,Richmond Rd at Kyoto,,37.29309,-76.72439,,0,1_1007,,3
+0_2577086,1008,Richmond Rd at Wendys,,37.29711,-76.72641,,0,1_1008,,3
+0_2576852,1009,Richmond Rd at Fireside,,37.29874,-76.72721,,0,1_1009,,3
+0_2577085,1010,Richmond Rd at Patriot Ln,,37.30698,-76.72958,,0,1_1010,,3
+0_2577084,1011,Richmond Rd at Airport Rd,,37.31305,-76.73222,,0,1_1011,,3
+0_2576820,1012,Richmond Rd at Premium Outlets,,37.32034,-76.73538,,0,1_1012,,3
+0_2577082,1037,Richmond Rd at Forest Heights,,37.3289,-76.74168,,0,1_1037,,3
+0_2576851,1018,Richmond Rd at Wellesley,,37.33261,-76.74519,,0,1_1018,,3
+0_2576942,1256,E Rochambeau Dr at Wal-Mart,,37.344645,-76.737993,,0,1_1256,,3
+0_2576860,1021,Richmond Rd at Herndon Jenkins,,37.33342,-76.74641,,0,1_1021,,3
+0_2577101,1022,Richmond Rd at Forest Heights,,37.32875,-76.74201,,0,1_1022,,3
+0_2577100,1023,Richmond Rd at Premuim Outlets,,37.3198,-76.73563,,0,1_1023,,3
+0_2576888,1291,Richmond Rd at Olde Towne Rd,,37.31662,-76.73423,,0,1_1291,,3
+0_2576859,1025,Richmond Rd at Stratford Rd,,37.31034,-76.73142,,0,1_1025,,3
+0_2577099,1026,Richmond Rd at Patriot Plaza,,37.30834,-76.73057,,0,1_1026,,3
+0_4160747,2500,Pilot Way at Kings Way,,37.2585744,-76.7410841,,0,1_2500,,3
+0_2577098,1027,Richmond Rd at Waltz Farm Dr,,37.30568,-76.72942,,0,1_1027,,3
+0_2577097,1028,Richmond Rd at Hampton Inn,,37.29895,-76.7275,,0,1_1028,,3
+0_2576858,1029,Richmond Rd at Taco Bell,,37.2969,-76.72651,,0,1_1029,,3
+0_2576857,1030,Richmond Rd at Rt 60 Barbeque,,37.29324,-76.72469,,0,1_1030,,3
+0_2577096,1031,Richmond Rd at High St,,37.28987,-76.7227,,0,1_1031,,3
+0_2577095,1032,Richmond Rd at New Hope Rd,,37.28612,-76.72118,,0,1_1032,,3
+0_2577093,1035,Richmond Rd at Blow Hall,,37.27284,-76.71138,,0,1_1035,,3
+0_2577092,1036,N Boundary St at Merchant Square,,37.27138,-76.7074,,0,1_1036,,3
+0_2577059,1077,Monticello Ave at Ritas Ice,,37.28153,-76.72173,,0,1_1077,,3
+0_2576938,1108,Merrimac Trl at Armstrong Dr,,37.24818,-76.65714,,0,1_1108,,3
+0_2576954,1093,N Henry St at Highland Park,,37.27771,-76.70542,,0,1_1093,,3
+0_2576877,1325,Battery Blvd at Harris Teeter,,37.24923,-76.68397,,0,1_1325,,3
+0_2576876,1326,Mounts Bay Rd at JCC Gov Center,,37.24485,-76.68265,,0,1_1326,,3
+0_2584547,1901,Burger King at Jefferson Ave,,37.207803,-76.574454,,0,1_1901,,3
+0_2576948,1249,Mooretown Rd at Governors Green,,37.2955,-76.723704,,0,1_1249,,3
+0_2576947,1250,Mooretown Rd at Anvil Campground,,37.307904,-76.728654,,0,1_1250,,3
+0_2576946,1251,Mooretown Rd at Ewell Rd 1,,37.316781,-76.731605,,0,1_1251,,3
+0_2576945,1252,Mooretown Rd at Ewell Rd 2,,37.320376,-76.734302,,0,1_1252,,3
+0_2576944,1253,Mooretown Rd at Old Taylor Rd,,37.328008,-76.735212,,0,1_1253,,3
+0_2576830,1254,Mooretown Rd at Bulifants Blvd,,37.33339,-76.73576,,0,1_1254,,3
+0_2576943,1255,Mooretown Rd at Marketcenter,,37.33903,-76.73801,,0,1_1255,,3
+0_2576965,1259,Mooretown Road at Sentara Cir,,37.33989,-76.7386,,0,1_1259,,3
+0_2576964,1260,Sentara Cir at Sentara Geddy,,37.3376,-76.74193,,0,1_1260,,3
+0_342400,1134,Longhill Rd at Regency,,37.3015765,-76.749733,,0,1_1134,,3
+0_2576840,1143,Centerville Rd at Forest Glen 1,,37.3178712,-76.7887966,,0,1_1143,,3
+0_4160741,2238,Monticello Ave at Courthouse St,,37.2764867,-76.7427133,,0,1_2238,,3
+0_2576926,1082,WM Parking Deck,,37.267844,-76.717826,,0,1_1082,,3
+0_2618104,2007,Lot 1,,37.279361,-76.72453,,0,1_2007,,3
+0_2576963,1261,Sentara Cir at Sentara Main,,37.3367,-76.74044,,0,1_1261,,3
+0_2576962,1263,Mooretown Rd at Old Taylor Rd,,37.32795,-76.73534,,0,1_1263,,3
+0_2576961,1264,Mooretown Rd at Ewell 3,,37.32049,-76.73446,,0,1_1264,,3
+0_2576960,1265,Mooretown Rd at Ewell 4,,37.316809,-76.731876,,0,1_1265,,3
+0_2576959,1266,Mooretown Rd at Anvil Campground,,37.308022,-76.728831,,0,1_1266,,3
+0_2576928,1045,Pocahontas Trl at WATA,,37.25748,-76.67022,,0,1_1045,,3
+0_2577067,1047,Pocahontas Trl at BB&T Bank,,37.24746,-76.6591,,0,1_1047,,3
+0_2576869,1048,Pocahontas Trl at Merrill Lynch,,37.24574,-76.65771,,0,1_1048,,3
+0_2577105,1044,Pocahontas Trl at Country Inn,,37.26042,-76.67379,,0,1_1044,,3
+0_2576890,1316,Pocahontas Trl at Fort Magruder,,37.2643,-76.67854,,0,1_1316,,3
+0_2577104,1072,York St at Valero,,37.2667,-76.68169,,0,1_1072,,3
+0_2577103,1073,York St at Quarterpath Place,,37.26774,-76.68454,,0,1_1073,,3
+0_2577102,1075,York St at Patrick Henry,,37.2702,-76.68767,,0,1_1075,,3
+0_2577090,1001,Armistead Ave. at Blayton Building,,37.27377,-76.70893,,0,1_1001,,3
+0_2577056,1094,Richmond Rd at WAWA,,37.27319,-76.71181,,0,1_1094,,3
+0_2577089,1002,Richmond Rd at One Tribe Place,,37.27452,-76.71359,,0,1_1002,,3
+0_2577088,1003,Richmond Rd at Wythe Ave,,37.27859,-76.7165,,0,1_1003,,3
+0_2576865,1004,Richmond Rd at Peter Chang,,37.28072,-76.71855,,0,1_1004,,3
+0_2576937,1117,Penniman Rd at Vineyard Ln,,37.26564,-76.66808,,0,1_1117,,3
+0_2576936,1118,Penniman Rd at Dodge Dr,,37.26625,-76.67031,,0,1_1118,,3
+0_2576849,1120,Merrimac Trl at Trail Plaza,,37.274,-76.67989,,0,1_1120,,3
+0_2576848,1124,Capitol Landing Rd at Merrimac Trl,,37.28588,-76.68699,,0,1_1124,,3
+0_2577038,1126,Capitol Landing Rd at Bypass Rd,,37.27943,-76.68999,,0,1_1126,,3
+0_2576899,1299,Jamestown Rd at Ironbound Rd,,37.2379,-76.75746,,0,1_1299,,3
+0_2576898,1301,Jamestown Rd at Consulate Health,,37.23904,-76.76511,,0,1_1301,,3
+0_2576896,1303,Colonial Pkwy at The Settlement,,37.22652,-76.78241,,0,1_1303,,3
+0_2576836,1235,Ironbound Rd at Harris Teeter,,37.250708,-76.764998,,0,1_1235,,3
+0_2576886,1308,Eagle Way at Jamestown High,,37.25326,-76.78733,,0,1_1308,,3
+0_2576895,1310,John Tyler Hwy at St Georges,,37.24945,-76.77711,,0,1_1310,,3
+0_2576893,1314,John Tyler Hwy at Mcdonalds,,37.25261,-76.76434,,0,1_1314,,3
+0_2576894,1311,John Tyler Hwy at Westray Downs,,37.25302,-76.75673,,0,1_1311,,3
+0_2576999,1174,Richmond Rd at Business Park,,37.38827,-76.80446,,0,1_1174,,3
+0_2576998,1176,Chickahominy Rd at Toano Trace,,37.37422,-76.80414,,0,1_1176,,3
+0_2576997,1177,Chickahominy Rd at 3339 Block,,37.37118,-76.80546,,0,1_1177,,3
+0_2576996,1178,Chickahominy Rd at Power Lines,,37.3638,-76.80598,,0,1_1178,,3
+0_2576995,1179,Chickahominy Rd at Friendship Dr,,37.358324,-76.810614,,0,1_1179,,3
+0_2576994,1180,Chickahominy Rd at Browns Dr,,37.3549,-76.81632,,0,1_1180,,3
+0_2576993,1181,Chickahominy Rd at Little Creek Dam,,37.35491,-76.82154,,0,1_1181,,3
+0_2576992,1182,Chickahominy Rd at Friendship Dr,,37.358421,-76.810684,,0,1_1182,,3
+0_10000,10000,Garage,4160745,37.2566158,-76.6718208,,0,1_10000,,3
+0_4160738,2235,Casey Blvd at Foundation St,,37.282093,-76.743174,,0,1_2235,,3
+0_4160739,2236,Treyburn Dr at Sterling Manor,,37.288042,-76.727448,,0,1_2236,,3
+0_2577052,1096,Capitol Landing Rd at Int Village,,37.28174,-76.68843,,0,1_1096,,3
+0_2576846,1097,Capitol Landing Rd at Merrimac Trl,,37.28618,-76.68654,,0,1_1097,,3
+0_2576920,1098,Merrimac Trl at Colonial Pines,,37.281,-76.68327,,0,1_1098,,3
+0_2577051,1099,Merrimac Trl at Colonial Towne,,37.27902,-76.68231,,0,1_1099,,3
+0_2576845,1101,Merrimac Trl at 2nd St,,37.27313,-76.6796,,0,1_1101,,3
+0_2576843,1104,Merrimac Trl at Fastenal,,37.26018,-76.67127,,0,1_1104,,3
+0_2576867,1052,Pocahontas Trl at Creative Kids,,37.22558,-76.62621,,0,1_1052,,3
+0_2576814,1053,Pocahontas Trl at Colonial Manor,,37.22123,-76.62579,,0,1_1053,,3
+0_2576911,1159,Longhill Rd at New Zion Church,,37.31591,-76.78149,,0,1_1159,,3
+0_2577034,1160,Longhill Rd at Longhill Gate,,37.31335,-76.77035,,0,1_1160,,3
+0_2577033,1161,Longhill Rd at Lafayette High,,37.31442,-76.76362,,0,1_1161,,3
+0_4147927,2231,Longhill Rd at Devon Rd,,37.306282,-76.752042,,0,1_2231,,3
+0_2577030,1165,Depue Dr at Eastern State,,37.29582,-76.73712,,0,1_1165,,3
+0_2577029,1166,Depue Dr at Plumeri Park,,37.289546,-76.73396,,0,1_1166,,3
+0_2576850,1115,Penniman Rd at Custis Dr,,37.26243,-76.66479,,0,1_1115,,3
+0_2577043,1116,Penniman Rd at Queens Creek Rd,,37.26388,-76.66551,,0,1_1116,,3
+0_2576935,1106,Penniman Rd at Magruder Elm,,37.26604,-76.67263,,0,1_1106,,3
+0_2576934,1119,Penniman Rd at James York Plaza,,37.26852,-76.67686,,0,1_1119,,3
+0_3878465,2200,2nd St at FISH Inc,,37.273684,-76.683391,,0,1_2200,,3
+0_2577040,1123,Merrimac Trl at Merrimac Crossing,,37.28323,-76.68438,,0,1_1123,,3
+0_2577039,1125,Capitol Landing Rd at Sals Ristorante,,37.28088,-76.68896,,0,1_1125,,3
+0_2576817,1297,Jamestown Rd at CVS,,37.2551,-76.73093,,0,1_1297,,3
+0_2576900,1298,Jamestown Rd at Colony Square,,37.25201,-76.7339,,0,1_1298,,3
+0_2576897,1302,Jamestown Rd at London Company,,37.23471,-76.77339,,0,1_1302,,3
+0_2576972,1234,Jamestown Rd at Village Green,,37.25488,-76.73083,,0,1_1234,,3
+0_2577000,1173,Barhamsville Rd at BP Food Mart,,37.40253,-76.80884,,0,1_1173,,3
+0_2576914,1175,Richmond Rd at Mcleans Grocery,,37.37983,-76.80397,,0,1_1175,,3
+0_4160737,2234,Casey Blvd at Settlers Market,,37.277063,-76.749463,,0,1_2234,,3
+0_2576819,1294,Discovery Park Blvd at Discovery Park,,37.27982,-76.73939,,0,1_1294,,3
+0_2577023,1169,Ironbound Rd at Parker View,,37.28412,-76.7351,,0,1_1169,,3
+0_2576863,1700,Ironbound Rd at Salvation Army,,37.2892,-76.72827,,0,1_1700,,3
+0_2576847,1095,Capitol Landing Rd at Red Roof Inn,,37.28072,-76.68886,,0,1_1095,,3
+0_2577049,1102,Merrimac Trl at CVS,,37.26874,-76.67735,,0,1_1102,,3
+0_2576919,1105,Merrimac Trl at Orange Dr,,37.25554,-76.6669,,0,1_1105,,3
+0_2576921,1127,Merrimac Trl at Colonial Health,,37.24547,-76.65386,,0,1_1127,,3
+0_2577047,1109,Merrimac Trl at Douglas Dr,,37.24997,-76.6595,,0,1_1109,,3
+0_2577053,1290,Visitor Center Dr at CW Visitor Center,,37.27879,-76.69836,,0,1_1290,,3
+0_2576815,1292,Battery Blvd at Riverside Hospital,,37.25355,-76.66654,,0,1_1292,,3
+0_2624010,2009,Old Williamsburg Rd at Sunshine Apts,,37.223483,-76.562822,,0,1_2009,,3
+0_2576832,1232,Queens Path at Riverside,,37.25668,-76.74143,,0,1_1232,,3
+0_2577064,1054,Pocahontas Trl at Carters Grove,,37.21616,-76.621,,0,1_1054,,3
+0_2577063,1055,Pocahontas Trl at James River Elm,,37.21034,-76.61646,,0,1_1055,,3
+0_2577062,1056,Pocahontas Trl at Happy Shopper,,37.207804,-76.61141,,0,1_1056,,3
+0_2577061,1057,Pocahontas Trl at Blow Flats Rd,,37.20679,-76.60625,,0,1_1057,,3
+0_2577060,1059,Warwick Blvd at Lee Hall Church,,37.20148,-76.57919,,0,1_1059,,3
+0_2577080,1074,Warwick Blvd at Falls Reach Pkwy,,37.20102,-76.57866,,0,1_1074,,3
+0_2577078,1061,Pocahontas Trl at Skiffes Creek,,37.207092,-76.609045,,0,1_1061,,3
+0_2577077,1062,Pocahontas Trl at Happy Shopper,,37.20787,-76.61134,,0,1_1062,,3
+0_2577076,1063,Pocahontas Trl at Brookside,,37.21089,-76.61718,,0,1_1063,,3
+0_2577075,1064,Pocahontas Trl at Heritage Park,,37.21341,-76.61897,,0,1_1064,,3
+0_2577074,1065,Pocahontas Trl at Dollar General,,37.21623,-76.621,,0,1_1065,,3
+0_2576871,1067,Pocahontas Trl at Creative Kids,,37.22672,-76.62633,,0,1_1067,,3
+0_2577072,1068,Pocahontas Trl at Howard Dr,,37.22956,-76.62661,,0,1_1068,,3
+0_2577071,1069,Pocahontas Trl at BG Brewery,,37.24026,-76.65008,,0,1_1069,,3
+0_2576958,1267,Mooretown Rd at Governers Green,,37.295759,-76.724052,,0,1_1267,,3
+0_2576957,1268,Mooretown Rd at Embassy Suites,,37.28848,-76.72091,,0,1_1268,,3
+0_2576831,1269,Mooretown Rd at Colony Dr,,37.28699,-76.71789,,0,1_1269,,3
+0_2576956,1270,Bypass Rd at Cracker Barrel,,37.28493,-76.71629,,0,1_1270,,3
+0_2576955,1271,Bypass Rd at Country Inn,,37.28468,-76.712714,,0,1_1271,,3
+0_2576816,1272,Bypass Rd. at Days Inn,,37.2845,-76.70841,,0,1_1272,,3
+0_2577054,1092,N Henry St at Highland Park,,37.27753,-76.70564,,0,1_1092,,3
+0_2576971,1213,Treyburn Dr at Diagnostic Center,,37.28083,-76.72636,,0,1_1213,,3
+0_2576838,1214,Treyburn Dr at Brookdale,,37.28266,-76.72647,,0,1_1214,,3
+0_2576970,1215,Treyburn Dr at Sterling Manor,,37.28811,-76.72726,,0,1_1215,,3
+0_2576969,1216,Ironbound Rd at Plumeri Park,,37.28896,-76.73225,,0,1_1216,,3
+0_2577028,1167,Ironbound Rd at Tewning Rd,,37.28705,-76.73415,,0,1_1167,,3
+0_2577027,1168,Ironbound Rd at Carinos Seafood,,37.28372,-76.73564,,0,1_1168,,3
+0_2577026,1128,New Town Ave at Velocity,,37.28189,-76.73823,,0,1_1128,,3
+0_2576905,1129,New Town Ave at Legacy Hall,,37.27947,-76.74232,,0,1_1129,,3
+0_4160735,2232,Center St at Casey Blvd,,37.280992,-76.744936,,0,1_2232,,3
+0_2576837,1219,Monticello Ave at Publix,,37.27228,-76.75924,,0,1_1219,,3
+0_2576967,1221,Monticello Ave at Target,,37.2718,-76.76058,,0,1_1221,,3
+0_2576980,1222,Steeplechase Dr at Steeplechase,,37.26711,-76.76319,,0,1_1222,,3
+0_2576978,1225,Monticello Ave at Marketplace Shops,,37.27016,-76.75672,,0,1_1225,,3
+0_2577046,1110,Whittakers Trace at Target,,37.25862,-76.64,,0,1_1110,,3
+0_2577045,1111,Whittakers Trace at Picklr,,37.2569419,-76.6393836,,0,1_1111,,3
+0_2577044,1113,Water Country Pkwy at Wyndham Garden,,37.262,-76.64306,,0,1_1113,,3
+0_2576922,1114,Alexander Lee Pkwy at Peoples Place,,37.26105,-76.65798,,0,1_1114,,3
+0_2576991,1183,Chickahominy Rd at Power Lines,,37.36391,-76.80588,,0,1_1183,,3
+0_2576990,1184,Chickahominy Rd at Toano Trace,,37.37437,-76.80402,,0,1_1184,,3
+0_2577010,1199,Richmond Rd at 7-Eleven,,37.34561,-76.7581,,0,1_1199,,3
+0_2577009,1200,Richmond Rd at The Pottery,,37.34822,-76.76059,,0,1_1200,,3
+0_2577008,1201,Richmond Rd at Go-Karts Plus,,37.35378,-76.76357,,0,1_1201,,3
+0_2577007,1202,Richmond Rd at 7-Eleven,,37.36244,-76.76606,,0,1_1202,,3
+0_2577006,1203,Richmond Rd at Norge Hall,,37.36747,-76.76985,,0,1_1203,,3
+0_2576825,1204,Richmond Rd at Tractor Supply,,37.37168,-76.77476,,0,1_1204,,3
+0_2577005,1205,Richmond Rd at C&F Bank,,37.37309,-76.77751,,0,1_1205,,3
+0_2577004,1206,Croaker Rd at JCC Library,,37.3778,-76.77096,,0,1_1206,,3
+0_2577003,1207,Croaker Rd at Station at Norge,,37.37504,-76.77586,,0,1_1207,,3
+0_2577002,1208,Richmond Rd at Luck Stone,,37.37714,-76.79164,,0,1_1208,,3
+0_2576824,1209,Richmond Rd at Peninsula Mulch,,37.3779,-76.79961,,0,1_1209,,3
+0_2576913,1210,Toano Dr at Burnt Ordinary 2,,37.38077,-76.80375,,0,1_1210,,3
+0_2576823,1289,Barhamsville Rd at Old Stage Rd,,37.406,-76.80906,,0,1_1289,,3
+0_2576842,1131,DePue Dr at Plumeri Park,,37.289535,-76.73376,,0,1_1131,,3
+0_2577022,1132,Ashbury Rd at JCC Rec Center,,37.29754,-76.73755,,0,1_1132,,3
+0_2577021,1133,Longhill Rd at Rolling Meadows,,37.2982,-76.74,,0,1_1133,,3
+0_2577020,1135,Longhill Rd at Williamsburg Plantation Dr,,37.304206,-76.750695,,0,1_1135,,3
+0_2577083,1014,Olde Towne Rd at Social Services,,37.30801,-76.75111,,0,1_1014,,3
+0_2577019,1136,Longhill Rd at Lafayette Blvd,,37.31094,-76.75843,,0,1_1136,,3
+0_2577018,1137,Longhill Rd at Lafayette High,,37.31456,-76.76338,,0,1_1137,,3
+0_2577017,1138,Longhill Rd at Warhill Sports,,37.31343,-76.77028,,0,1_1138,,3
+0_2577016,1140,Longhill Rd at Dominion Village,,37.31356,-76.77581,,0,1_1140,,3
+0_2576910,1141,Longhill Rd at New Zion Church,,37.31599,-76.78169,,0,1_1141,,3
+0_2576841,1142,Longhill Rd at Jolly Pond Vet,,37.31651,-76.78803,,0,1_1142,,3
+0_2577015,1144,Centerville Rd at Forest Glen 2,,37.3222,-76.78916,,0,1_1144,,3
+0_2576909,1145,Centerville Rd at Fox Ridge,,37.3276,-76.78896,,0,1_1145,,3
+0_2577014,1146,Centerville Rd at Jones Dr,,37.33149,-76.78498,,0,1_1146,,3
+0_2576908,1147,Centerville Rd at Adams Hunt,,37.33509,-76.77492,,0,1_1147,,3
+0_2577013,1148,Centerville Rd at Handy Ice,,37.33761,-76.76775,,0,1_1148,,3
+0_2576892,1318,Centerville Rd at Opportunity Way,,37.33809,-76.75826,,0,1_1318,,3
+0_2576966,1258,Lightfoot Rd at Antique Mall,,37.34328,-76.74741,,0,1_1258,,3
+0_2576887,1295,Centerville Rd at Harris Teeter,,37.33922,-76.75609,,0,1_1295,,3
+0_2577037,1151,Centerville Rd at Mobile Estates,,37.33892,-76.76228,,0,1_1151,,3
+0_2577036,1152,Centerville Rd at Handy Ice,,37.33768,-76.76773,,0,1_1152,,3
+0_2576912,1153,Centerville Rd at Adams Hunt,,37.33499,-76.77566,,0,1_1153,,3
+0_2577081,1060,Elmhurst St at Lee Hall,,37.19292,-76.57408,,0,1_1060,,3
+0_2576875,1327,Old Williamsburg Rd at Lackey Clinic,,37.23121,-76.55483,,0,1_1327,,3
+0_2576874,1335,Old Williamsburg Rd at Rising Sun OB,,37.23274,-76.54599,,0,1_1335,,3
+0_2576873,1328,Old Williamsburg Rd at Woods of Yorktown,,37.23425,-76.53737,,0,1_1328,,3
+0_2576885,1329,Barham Blvd at Rivermeade,,37.22678,-76.51867,,0,1_1329,,3
+0_2576884,1336,Barham Blvd at Yorktown Square,,37.22698,-76.52173,,0,1_1336,,3
+0_2576883,1333,Old Williamsburg Rd at Woods of Yorktown,,37.23428,-76.53746,,0,1_1333,,3
+0_2576882,1337,Old Williamsburg Rd at Rising Sun IB,,37.23278,-76.54638,,0,1_1337,,3
+0_2576881,1330,Old Williamsburg Rd at Dogwood Rd,,37.23135,-76.55462,,0,1_1330,,3
+0_2629095,2010,Old Williamsburg Rd and Sunshine Way,,37.223402,-76.56304,,0,1_2010,,3
+0_2576880,1331,Yorktown Rd at Hamilton Redoubt,,37.20981,-76.57297,,0,1_1331,,3
+0_2576879,1338,Longfellow Rd at YNWS Gate 3,,37.21333,-76.58409,,0,1_1338,,3
+0_2576889,1600,Jamestown Rd at Lemon Hall,,37.26844,-76.712733,,0,1_1600,,3
+0_2577066,1049,Pocahontas Trl at Kingsmill,,37.24383,-76.6561,,0,1_1049,,3
+0_2577065,1050,Pocahontas Trl at BG England Lot,,37.23932,-76.64718,,0,1_1050,,3
+0_2576968,1217,Monticello Ave at Trader Joes,,37.27663,-76.74731,,0,1_1217,,3
+0_4160736,2233,Casey Blvd at Settlers Market,,37.277357,-76.749429,,0,1_2233,,3
+0_2576977,1226,Monticello Ave at Courthouse Commons,,37.27605,-76.74788,,0,1_1226,,3
+0_2576976,1227,Monticello Ave at Post Office,,37.27643,-76.74522,,0,1_1227,,3
+0_2577024,1130,Courthouse St at WJCC Courthouse,,37.2761,-76.74225,,0,1_1130,,3
+0_2576975,1228,Strawberry Plains Rd at Berkeley Middle,,37.27325,-76.73897,,0,1_1228,,3
+0_2576974,1229,Strawberry Plains Rd at Midlands,,37.26771,-76.74065,,0,1_1229,,3
+0_2576835,1702,Monarch Crossing at Promenade,,37.25652,-76.73744,,0,1_1702,,3
+0_4160742,2239,Strawberry Plains at Tranquility,,37.26229,-76.739408,,0,1_2239,,3
+0_4160743,2240,Strawberry Plains at Midlands,,37.267878,-76.740446,,0,1_2240,,3
+0_4160744,2241,Strawberry Plains at Berkely Middle,,37.273383,-76.73884,,0,1_2241,,3
+0_2576953,1245,Bypass Rd at Homewood Suites,,37.28474,-76.70938,,0,1_1245,,3
+0_2576952,1246,Bypass Rd at Comfort Inn,,37.284763,-76.71242,,0,1_1246,,3
+0_2576950,1247,Mooretown Rd at Kingsgate Shops,,37.28716,-76.71785,,0,1_1247,,3
+0_2576949,1248,Mooretown Rd at Embassy Suites,,37.28855,-76.72084,,0,1_1248,,3
+0_2624011,2008,Mooretown Rd at Reserve Way,,37.293069,-76.722706,,0,1_2008,,3
+0_2576917,1185,Richmond Rd at Toano Middle,,37.37791,-76.80071,,0,1_1185,,3
+0_2576989,1186,Richmond Rd at Hunters Creek,,37.37693,-76.79724,,0,1_1186,,3
+0_2576988,1187,Richmond Rd at John Deer,,37.37665,-76.79424,,0,1_1187,,3
+0_2576916,1188,Richmond Rd at CVS,,37.37246,-76.77693,,0,1_1188,,3
+0_2576987,1189,Richmond Rd at Post Office,,37.37079,-76.77411,,0,1_1189,,3
+0_2576986,1190,Richmond Rd at Norge Shops,,37.36711,-76.76969,,0,1_1190,,3
+0_2576985,1191,Richmond Rd at 7-Eleven,,37.3622,-76.76614,,0,1_1191,,3
+0_2576984,1192,Richmond Rd at Colonial Towne,,37.35532,-76.76419,,0,1_1192,,3
+0_2576983,1193,Richmond Rd at The Pottery,,37.3481,-76.76106,,0,1_1193,,3
+0_2576982,1194,Richmond Rd at Chesapeake Bank,,37.34533,-76.75841,,0,1_1194,,3
+0_2576981,1195,Richmond Rd at Mcdonalds,,37.34046,-76.75487,,0,1_1195,,3
+0_2576839,1196,Richmond Rd at Shell,,37.33908,-76.75327,,0,1_1196,,3
+0_2577012,1197,Richmond Rd at Pavillion Shops,,37.34211,-76.7555,,0,1_1197,,3
+0_2577011,1198,Richmond Rd at New York Deli,,37.34343,-76.75638,,0,1_1198,,3
+0_2576901,1154,Centerville Rd at Jolly Pond Rd,,37.33401,-76.78189,,0,1_1154,,3
+0_2576902,1155,Centerville Rd at Jones Dr,,37.33143,-76.78512,,0,1_1155,,3
+0_2576903,1156,Centerville Rd at Longhill Station,,37.32656,-76.78919,,0,1_1156,,3
+0_2576904,1157,Centerville Rd at JSG Corporation,,37.32103,-76.78852,,0,1_1157,,3
+0_2577035,1158,Longhill Rd at Longhill Grove,,37.31643,-76.78746,,0,1_1158,,3
+0_2576833,1230,Pilot Way at Taco Bell,,37.2586334,-76.7407479,,0,1_1230,,3
+0_4160748,2501,Jamestown Rd at Rolfe Rd,,37.2649116,-76.7196935,,0,1_2501,,3
+0_4160749,2502,Jamestown Rd at Ludwell Apts,,37.2648457,-76.7196263,,0,1_2502,,3
+0_2577091,1000,N Boundary St at Williamsburg TC,,37.2763539,-76.7082572,,0,1_1000,,3
+0_3423000,9000,Visitor Center,,37.2789702,-76.6990171,,0,1_9000,,3
+0_3423001,9001,The Palace,,37.274725,-76.7006893,,0,1_9001,,3
+0_3423008,9002,The Capitol,,37.2716374,-76.6918008,,0,1_9002,,3
+0_3423009,9003,The Tavern,,37.2705012,-76.6964855,,0,1_9003,,3
+0_3423007,9004,Market House,,37.270365,-76.6992992,,0,1_9004,,3
+0_3423005,9006,Art Museum,,37.2677494,-76.7036032,,0,1_9006,,3
+0_3423006,9007,Merchant Square,,37.2707193,-76.7057123,,0,1_9007,,3
+0_2576941,1257,E Rochambeau Dr at Great Wolf Lodge,,37.3492223,-76.7310239,,0,1_1257,,3
+0_342300,1262,Mooretown Rd at Hornor Ln,,37.3338089,-76.7363694,,0,1_1262,,3
+0_2576868,1051,Pocahontas Trl at BG Construction,,37.2316145,-76.6275286,,0,1_1051,,3
+0_2577073,1066,Pocahontas Trl at Mount Gilead,,37.2224925,-76.6258113,,0,1_1066,,3
+0_2576979,1224,Monticello Ave at Veterans Park,,37.2682586,-76.7618013,,0,1_1224,,3
+0_2576878,1332,Merrimac Trl at VP Regional Jail,,37.2157494,-76.6028955,,0,1_1332,,3
+0_3423004,9005,Williamsburg Lodge,,37.2681974,-76.6999493,,0,1_9005,,3
+0_2577042,1121,Merrimac Trl at Priorslee Ln,,37.2763481,-76.6810009,,0,1_1121,,3
+0_2577001,1171,Barhamsville Rd at LaGrange Pkwy,,37.4091019,-76.8101708,,0,1_1171,,3
+0_2577050,1100,Merrimac Trl at Parkway Apts,,37.2761087,-76.6810194,,0,1_1100,,3
+0_2577031,1163,Longhill Rd at Fords Colony,,37.3011145,-76.7496966,,0,1_1163,,3
+0_4160740,2237,Treyburn Dr at Brookdale,,37.282494,-76.7266943,,0,1_2237,,3
+0_2577048,1107,Tam-O-Shanter Blvd at Merrimac Trl,,37.2440086,-76.6510569,,0,1_1107,,3
+0_2577079,1058,Pocahontas Trl at WalMart Dist,,37.2077904,-76.599929,,0,1_1058,,3
+0_2576891,1315,Pocahontas Trl at Green Mtn Pkwy,,37.2079377,-76.5999724,,0,1_1315,,3
+0_4160746,2400,Industrial Blvd at VPCC,,37.3848917,-76.7926332,,0,1_2400,,3
+1_1030,,Richmond Rd at Rt 60 Barbeque,,37.29324,-76.72469,,1,,,
+1_1032,,Richmond Rd at New Hope Rd,,37.28612,-76.72118,,1,,,
+1_1245,,Bypass Rd at Homewood Suites,,37.28474,-76.70938,,1,,,
+1_1246,,Bypass Rd at Comfort Inn,,37.284763,-76.71242,,1,,,
+1_1248,,Mooretown Rd at Embassy Suites,,37.28855,-76.72084,,1,,,
+1_2008,,Mooretown Rd at Reserve Way,,37.293069,-76.722706,,1,,,
+1_1249,,Mooretown Rd at Governors Green,,37.2955,-76.723704,,1,,,
+1_1251,,Mooretown Rd at Ewell Rd 1,,37.316781,-76.731605,,1,,,
+1_1252,,Mooretown Rd at Ewell Rd 2,,37.320376,-76.734302,,1,,,
+1_1254,,Mooretown Rd at Bulifants Blvd,,37.33339,-76.73576,,1,,,
+1_1261,,Sentara Cir at Sentara Main,,37.3367,-76.74044,,1,,,
+1_1199,,Richmond Rd at 7-Eleven,,37.34561,-76.7581,,1,,,
+1_1202,,Richmond Rd at 7-Eleven,,37.36244,-76.76606,,1,,,
+1_1205,,Richmond Rd at C&F Bank,,37.37309,-76.77751,,1,,,
+1_1208,,Richmond Rd at Luck Stone,,37.37714,-76.79164,,1,,,
+1_1041,,York St at The Flats,,37.26639,-76.68138,,1,,,
+1_1048,,Pocahontas Trl at Merrill Lynch,,37.24574,-76.65771,,1,,,
+1_1051,,Pocahontas Trl at BG Construction,,37.2316145,-76.6275286,,1,,,
+1_1054,,Pocahontas Trl at Carters Grove,,37.21616,-76.621,,1,,,
+1_1057,,Pocahontas Trl at Blow Flats Rd,,37.20679,-76.60625,,1,,,
+1_1315,,Pocahontas Trl at Green Mtn Pkwy,,37.2079377,-76.5999724,,1,,,
+1_1063,,Pocahontas Trl at Brookside,,37.21089,-76.61718,,1,,,
+1_1066,,Pocahontas Trl at Mount Gilead,,37.2224925,-76.6258113,,1,,,
+1_1044,,Pocahontas Trl at Country Inn,,37.26042,-76.67379,,1,,,
+1_1075,,York St at Patrick Henry,,37.2702,-76.68767,,1,,,
+1_1325,,Battery Blvd at Harris Teeter,,37.24923,-76.68397,,1,,,
+1_1335,,Old Williamsburg Rd at Rising Sun OB,,37.23274,-76.54599,,1,,,
+1_1081,,Commons Dining,,37.27212,-76.7192,,1,,,
+1_1310,,John Tyler Hwy at St Georges,,37.24945,-76.77711,,1,,,
+1_1001,,Armistead Ave. at Blayton Building,,37.27377,-76.70893,,1,,,
+1_1111,,Whittakers Trace at Picklr,,37.2569419,-76.6393836,,1,,,
+1_2234,,Casey Blvd at Settlers Market,,37.277063,-76.749463,,1,,,
+1_9002,,The Capitol,,37.2716374,-76.6918008,,1,,,
+1_9005,,Williamsburg Lodge,,37.2681974,-76.6999493,,1,,,
+1_1171,,Barhamsville Rd at LaGrange Pkwy,,37.4091019,-76.8101708,,1,,,
+1_1256,,E Rochambeau Dr at Wal-Mart,,37.344645,-76.737993,,1,,,
+1_1297,,Jamestown Rd at CVS,,37.2551,-76.73093,,1,,,
+1_1166,,Depue Dr at Plumeri Park,,37.289546,-76.73396,,1,,,
+1_1045,,Pocahontas Trl at WATA,,37.25748,-76.67022,,1,,,
+1_1102,,Merrimac Trl at CVS,,37.26874,-76.67735,,1,,,
+1_1077,,Monticello Ave at Ritas Ice,,37.28153,-76.72173,,1,,,
+1_2238,,Monticello Ave at Courthouse St,,37.2764867,-76.7427133,,1,,,
+1_1217,,Monticello Ave at Trader Joes,,37.27663,-76.74731,,1,,,
+1_1130,,Courthouse St at WJCC Courthouse,,37.2761,-76.74225,,1,,,
+1_1232,,Queens Path at Riverside,,37.25668,-76.74143,,1,,,
+1_1702,,Monarch Crossing at Promenade,,37.25652,-76.73744,,1,,,
+1_1062,,Pocahontas Trl at Happy Shopper,,37.20787,-76.61134,,1,,,
+1_1195,,Richmond Rd at Mcdonalds,,37.34046,-76.75487,,1,,,
+1_1204,,Richmond Rd at Tractor Supply,,37.37168,-76.77476,,1,,,
+1_1206,,Croaker Rd at JCC Library,,37.3778,-76.77096,,1,,,
+1_1210,,Toano Dr at Burnt Ordinary 2,,37.38077,-76.80375,,1,,,
+1_1040,,York St at Quarterpath Place,,37.26765,-76.68455,,1,,,
+1_1050,,Pocahontas Trl at BG England Lot,,37.23932,-76.64718,,1,,,
+1_1600,,Jamestown Rd at Lemon Hall,,37.26844,-76.712733,,1,,,
+1_1299,,Jamestown Rd at Ironbound Rd,,37.2379,-76.75746,,1,,,
+1_1303,,Colonial Pkwy at The Settlement,,37.22652,-76.78241,,1,,,
+1_1308,,Eagle Way at Jamestown High,,37.25326,-76.78733,,1,,,
+1_1234,,Jamestown Rd at Village Green,,37.25488,-76.73083,,1,,,
+1_1087,,Jamestown Rd at Cary St,,37.268308,-76.712646,,1,,,
+1_1005,,Richmond Rd at VA Peanuts,,37.28604,-76.72082,,1,,,
+1_1008,,Richmond Rd at Wendys,,37.29711,-76.72641,,1,,,
+1_4160745,,Garage,,37.2566044,-76.6718033,,1,,,
+1_1014,,Olde Towne Rd at Social Services,,37.30801,-76.75111,,1,,,
+1_1137,,Longhill Rd at Lafayette High,,37.31456,-76.76338,,1,,,
+1_1295,,Centerville Rd at Harris Teeter,,37.33922,-76.75609,,1,,,
+1_1082,,WM Parking Deck,,37.267844,-76.717826,,1,,,
+1_2007,,Lot 1,,37.279361,-76.72453,,1,,,
+1_1080,,Kaplan Arena,,37.274688,-76.720189,,1,,,
+1_2001,,Jones Hall,,37.267694,-76.717646,,1,,,
+1_2003,,Yates Lot,,37.271992,-76.719196,,1,,,
+1_1328,,Old Williamsburg Rd at Woods of Yorktown,,37.23425,-76.53737,,1,,,
+1_1338,,Longfellow Rd at YNWS Gate 3,,37.21333,-76.58409,,1,,,
+1_1235,,Ironbound Rd at Harris Teeter,,37.250708,-76.764998,,1,,,
+1_1012,,Richmond Rd at Premium Outlets,,37.32034,-76.73538,,1,,,
+1_1021,,Richmond Rd at Herndon Jenkins,,37.33342,-76.74641,,1,,,
+1_1119,,Penniman Rd at James York Plaza,,37.26852,-76.67686,,1,,,
+1_1071,,Pocahontas Trl at Wendys,,37.24617,-76.65761,,1,,,
+1_1326,,Mounts Bay Rd at JCC Gov Center,,37.24485,-76.68265,,1,,,
+1_1901,,Burger King at Jefferson Ave,,37.207803,-76.574454,,1,,,
+1_1329,,Barham Blvd at Rivermeade,,37.22678,-76.51867,,1,,,
+1_1332,,Merrimac Trl at VP Regional Jail,,37.2157494,-76.6028955,,1,,,
+1_1107,,Tam-O-Shanter Blvd at Merrimac Trl,,37.2440086,-76.6510569,,1,,,
+1_1221,,Monticello Ave at Target,,37.2718,-76.76058,,1,,,
+1_1700,,Ironbound Rd at Salvation Army,,37.2892,-76.72827,,1,,,
+1_9001,,The Palace,,37.274725,-76.7006893,,1,,,
+1_9003,,The Tavern,,37.2705012,-76.6964855,,1,,,
+1_9006,,Art Museum,,37.2677494,-76.7036032,,1,,,
+1_1173,,Barhamsville Rd at BP Food Mart,,37.40253,-76.80884,,1,,,
+1_1031,,Richmond Rd at High St,,37.28987,-76.7227,,1,,,
+1_1247,,Mooretown Rd at Kingsgate Shops,,37.28716,-76.71785,,1,,,
+1_1179,,Chickahominy Rd at Friendship Dr,,37.358324,-76.810614,,1,,,
+1_1185,,Richmond Rd at Toano Middle,,37.37791,-76.80071,,1,,,
+1_1266,,Mooretown Rd at Anvil Campground,,37.308022,-76.728831,,1,,,
+1_1269,,Mooretown Rd at Colony Dr,,37.28699,-76.71789,,1,,,
+1_1034,,Richmond Rd at Richmond Hall,,37.27866,-76.71665,,1,,,
+1_1222,,Steeplechase Dr at Steeplechase,,37.26711,-76.76319,,1,,,
+1_9000,,Visitor Center,,37.2789702,-76.6990171,,1,,,
+1_9007,,Merchant Square,,37.2707193,-76.7057123,,1,,,
+1_1292,,Battery Blvd at Riverside Hospital,,37.25355,-76.66654,,1,,,
+1_1128,,New Town Ave at Velocity,,37.28189,-76.73823,,1,,,
+1_9004,,Market House,,37.270365,-76.6992992,,1,,,
+1_1290,,Visitor Center Dr at CW Visitor Center,,37.27879,-76.69836,,1,,,
+1_1097,,Capitol Landing Rd at Merrimac Trl,,37.28618,-76.68654,,1,,,
+1_1000,,N Boundary St at Williamsburg TC,,37.2763539,-76.7082572,,1,,,
+1_1038,,Richmond Rd at Food Lion,,37.2808,-76.71872,,1,,,
+1_1129,,New Town Ave at Legacy Hall,,37.27947,-76.74232,,1,,,
+1_1023,,Richmond Rd at Premuim Outlets,,37.3198,-76.73563,,1,,,
+1_1255,,Mooretown Rd at Marketcenter,,37.33903,-76.73801,,1,,,
+1_1257,,E Rochambeau Dr at Great Wolf Lodge,,37.3492223,-76.7310239,,1,,,
+1_1260,,Sentara Cir at Sentara Geddy,,37.3376,-76.74193,,1,,,
+1_1060,,Elmhurst St at Lee Hall,,37.19292,-76.57408,,1,,,
+1_1069,,Pocahontas Trl at BG Brewery,,37.24026,-76.65008,,1,,,
+1_1072,,York St at Valero,,37.2667,-76.68169,,1,,,
+1_2006,,School of ED,,37.278658,-76.723472,,1,,,
+1_2004,,Kaplan Lot,,37.274779,-76.720239,,1,,,
+1_2005,,Lot 4,,37.280161,-76.723283,,1,,,
+1_1089,,WM Grad Plex,,37.2637699,-76.7052853,,1,,,
+1_2301,,Wake Dr,,37.2711388,-76.7195315,,1,,,
+1_2002,,Small Hall,,37.269007,-76.717628,,1,,,
+1_2600,,Events Center,,37.2813754,-76.6964359,,1,,,
+1_1219,,Monticello Ave at Publix,,37.27228,-76.75924,,1,,,
+1_1224,,Monticello Ave at Veterans Park,,37.2682586,-76.7618013,,1,,,
+1_1294,,Discovery Park Blvd at Discovery Park,,37.27982,-76.73939,,1,,,
+1_2237,,Treyburn Dr at Brookdale,,37.282494,-76.7266943,,1,,,
+1_1175,,Richmond Rd at Mcleans Grocery,,37.37983,-76.80397,,1,,,
+1_1178,,Chickahominy Rd at Power Lines,,37.3638,-76.80598,,1,,,
+1_1181,,Chickahominy Rd at Little Creek Dam,,37.35491,-76.82154,,1,,,
+1_1184,,Chickahominy Rd at Toano Trace,,37.37437,-76.80402,,1,,,
+1_1187,,Richmond Rd at John Deer,,37.37665,-76.79424,,1,,,
+1_1190,,Richmond Rd at Norge Shops,,37.36711,-76.76969,,1,,,
+1_1193,,Richmond Rd at The Pottery,,37.3481,-76.76106,,1,,,
+1_1140,,Longhill Rd at Dominion Village,,37.31356,-76.77581,,1,,,
+1_1141,,Longhill Rd at New Zion Church,,37.31599,-76.78169,,1,,,
+1_1143,,Centerville Rd at Forest Glen 1,,37.3178712,-76.7887966,,1,,,
+1_1144,,Centerville Rd at Forest Glen 2,,37.3222,-76.78916,,1,,,
+1_1146,,Centerville Rd at Jones Dr,,37.33149,-76.78498,,1,,,
+1_1147,,Centerville Rd at Adams Hunt,,37.33509,-76.77492,,1,,,
+1_1318,,Centerville Rd at Opportunity Way,,37.33809,-76.75826,,1,,,
+1_1258,,Lightfoot Rd at Antique Mall,,37.34328,-76.74741,,1,,,
+1_10000,,Garage,,37.2566158,-76.6718208,,1,,,
+1_1029,,Richmond Rd at Taco Bell,,37.2969,-76.72651,,1,,,
+1_1165,,Depue Dr at Eastern State,,37.29582,-76.73712,,1,,,
+1_1095,,Capitol Landing Rd at Red Roof Inn,,37.28072,-76.68886,,1,,,
+1_1101,,Merrimac Trl at 2nd St,,37.27313,-76.6796,,1,,,
+1_1096,,Capitol Landing Rd at Int Village,,37.28174,-76.68843,,1,,,
+1_1098,,Merrimac Trl at Colonial Pines,,37.281,-76.68327,,1,,,
+1_1099,,Merrimac Trl at Colonial Towne,,37.27902,-76.68231,,1,,,
+1_1121,,Merrimac Trl at Priorslee Ln,,37.2763481,-76.6810009,,1,,,
+1_1104,,Merrimac Trl at Fastenal,,37.26018,-76.67127,,1,,,
+1_1105,,Merrimac Trl at Orange Dr,,37.25554,-76.6669,,1,,,
+1_1127,,Merrimac Trl at Colonial Health,,37.24547,-76.65386,,1,,,
+1_1108,,Merrimac Trl at Armstrong Dr,,37.24818,-76.65714,,1,,,
+1_1226,,Monticello Ave at Courthouse Commons,,37.27605,-76.74788,,1,,,
+1_1228,,Strawberry Plains Rd at Berkeley Middle,,37.27325,-76.73897,,1,,,
+1_1229,,Strawberry Plains Rd at Midlands,,37.26771,-76.74065,,1,,,
+1_2239,,Strawberry Plains at Tranquility,,37.26229,-76.739408,,1,,,
+1_1074,,Warwick Blvd at Falls Reach Pkwy,,37.20102,-76.57866,,1,,,
+1_1061,,Pocahontas Trl at Skiffes Creek,,37.207092,-76.609045,,1,,,
+1_1197,,Richmond Rd at Pavillion Shops,,37.34211,-76.7555,,1,,,
+1_1198,,Richmond Rd at New York Deli,,37.34343,-76.75638,,1,,,
+1_1200,,Richmond Rd at The Pottery,,37.34822,-76.76059,,1,,,
+1_1201,,Richmond Rd at Go-Karts Plus,,37.35378,-76.76357,,1,,,
+1_1203,,Richmond Rd at Norge Hall,,37.36747,-76.76985,,1,,,
+1_1207,,Croaker Rd at Station at Norge,,37.37504,-76.77586,,1,,,
+1_1209,,Richmond Rd at Peninsula Mulch,,37.3779,-76.79961,,1,,,
+1_1289,,Barhamsville Rd at Old Stage Rd,,37.406,-76.80906,,1,,,
+1_1039,,York St at Patrick Henry,,37.27011,-76.68767,,1,,,
+1_1042,,Pocahontas Trl at Fort Magruder,,37.26423,-76.67867,,1,,,
+1_1043,,Pocahontas Trl at Country Inn,,37.26005,-76.67358,,1,,,
+1_1047,,Pocahontas Trl at BB&T Bank,,37.24746,-76.6591,,1,,,
+1_1049,,Pocahontas Trl at Kingsmill,,37.24383,-76.6561,,1,,,
+1_1052,,Pocahontas Trl at Creative Kids,,37.22558,-76.62621,,1,,,
+1_1053,,Pocahontas Trl at Colonial Manor,,37.22123,-76.62579,,1,,,
+1_1055,,Pocahontas Trl at James River Elm,,37.21034,-76.61646,,1,,,
+1_1056,,Pocahontas Trl at Happy Shopper,,37.207804,-76.61141,,1,,,
+1_1058,,Pocahontas Trl at WalMart Dist,,37.2077904,-76.599929,,1,,,
+1_1059,,Warwick Blvd at Lee Hall Church,,37.20148,-76.57919,,1,,,
+1_1301,,Jamestown Rd at Consulate Health,,37.23904,-76.76511,,1,,,
+1_1314,,John Tyler Hwy at Mcdonalds,,37.25261,-76.76434,,1,,,
+1_1311,,John Tyler Hwy at Westray Downs,,37.25302,-76.75673,,1,,,
+1_1088,,Jamestown Rd at Campus Center,,37.26979,-76.70909,,1,,,
+1_1007,,Richmond Rd at Kyoto,,37.29309,-76.72439,,1,,,
+1_1010,,Richmond Rd at Patriot Ln,,37.30698,-76.72958,,1,,,
+1_1011,,Richmond Rd at Airport Rd,,37.31305,-76.73222,,1,,,
+1_1037,,Richmond Rd at Forest Heights,,37.3289,-76.74168,,1,,,
+1_1100,,Merrimac Trl at Parkway Apts,,37.2761087,-76.6810194,,1,,,
+1_2400,,Industrial Blvd at VPCC,,37.3848917,-76.7926332,,1,,,
+1_1103,,Merrimac Trl at Duffie Dr,,37.26411,-76.67408,,1,,,
+1_1214,,Treyburn Dr at Brookdale,,37.28266,-76.72647,,1,,,
+1_1131,,DePue Dr at Plumeri Park,,37.289535,-76.73376,,1,,,
+1_1133,,Longhill Rd at Rolling Meadows,,37.2982,-76.74,,1,,,
+1_1134,,Longhill Rd at Regency,,37.3015765,-76.749733,,1,,,
+1_1136,,Longhill Rd at Lafayette Blvd,,37.31094,-76.75843,,1,,,
+1_1151,,Centerville Rd at Mobile Estates,,37.33892,-76.76228,,1,,,
+1_1152,,Centerville Rd at Handy Ice,,37.33768,-76.76773,,1,,,
+1_1154,,Centerville Rd at Jolly Pond Rd,,37.33401,-76.78189,,1,,,
+1_1155,,Centerville Rd at Jones Dr,,37.33143,-76.78512,,1,,,
+1_1157,,Centerville Rd at JSG Corporation,,37.32103,-76.78852,,1,,,
+1_1160,,Longhill Rd at Longhill Gate,,37.31335,-76.77035,,1,,,
+1_1115,,Penniman Rd at Custis Dr,,37.26243,-76.66479,,1,,,
+1_1117,,Penniman Rd at Vineyard Ln,,37.26564,-76.66808,,1,,,
+1_1118,,Penniman Rd at Dodge Dr,,37.26625,-76.67031,,1,,,
+1_2200,,2nd St at FISH Inc,,37.273684,-76.683391,,1,,,
+1_1120,,Merrimac Trl at Trail Plaza,,37.274,-76.67989,,1,,,
+1_1124,,Capitol Landing Rd at Merrimac Trl,,37.28588,-76.68699,,1,,,
+1_1125,,Capitol Landing Rd at Sals Ristorante,,37.28088,-76.68896,,1,,,
+1_1265,,Mooretown Rd at Ewell 4,,37.316809,-76.731876,,1,,,
+1_1268,,Mooretown Rd at Embassy Suites,,37.28848,-76.72091,,1,,,
+1_1135,,Longhill Rd at Williamsburg Plantation Dr,,37.304206,-76.750695,,1,,,
+1_1153,,Centerville Rd at Adams Hunt,,37.33499,-76.77566,,1,,,
+1_1156,,Centerville Rd at Longhill Station,,37.32656,-76.78919,,1,,,
+1_1159,,Longhill Rd at New Zion Church,,37.31591,-76.78149,,1,,,
+1_2010,,Old Williamsburg Rd and Sunshine Way,,37.223402,-76.56304,,1,,,
+1_1331,,Yorktown Rd at Hamilton Redoubt,,37.20981,-76.57297,,1,,,
+1_1298,,Jamestown Rd at Colony Square,,37.25201,-76.7339,,1,,,
+1_1302,,Jamestown Rd at London Company,,37.23471,-76.77339,,1,,,
+1_1086,,Jamestown Rd at Indian Springs,,37.26753,-76.71425,,1,,,
+1_1006,,Richmond Rd at The Jefferson,,37.28958,-76.72235,,1,,,
+1_1009,,Richmond Rd at Fireside,,37.29874,-76.72721,,1,,,
+1_1116,,Penniman Rd at Queens Creek Rd,,37.26388,-76.66551,,1,,,
+1_1106,,Penniman Rd at Magruder Elm,,37.26604,-76.67263,,1,,,
+1_1126,,Capitol Landing Rd at Bypass Rd,,37.27943,-76.68999,,1,,,
+1_1263,,Mooretown Rd at Old Taylor Rd,,37.32795,-76.73534,,1,,,
+1_1264,,Mooretown Rd at Ewell 3,,37.32049,-76.73446,,1,,,
+1_1064,,Pocahontas Trl at Heritage Park,,37.21341,-76.61897,,1,,,
+1_1065,,Pocahontas Trl at Dollar General,,37.21623,-76.621,,1,,,
+1_1067,,Pocahontas Trl at Creative Kids,,37.22672,-76.62633,,1,,,
+1_1068,,Pocahontas Trl at Howard Dr,,37.22956,-76.62661,,1,,,
+1_1070,,Pocahontas Trl at BG Bavaria Lot,,37.24421,-76.65593,,1,,,
+1_1076,,Pocahontas Trl at WATA,,37.25756,-76.67,,1,,,
+1_1316,,Pocahontas Trl at Fort Magruder,,37.2643,-76.67854,,1,,,
+1_1073,,York St at Quarterpath Place,,37.26774,-76.68454,,1,,,
+1_2009,,Old Williamsburg Rd at Sunshine Apts,,37.223483,-76.562822,,1,,,
+1_1327,,Old Williamsburg Rd at Lackey Clinic,,37.23121,-76.55483,,1,,,
+1_1336,,Barham Blvd at Yorktown Square,,37.22698,-76.52173,,1,,,
+1_1333,,Old Williamsburg Rd at Woods of Yorktown,,37.23428,-76.53746,,1,,,
+1_1337,,Old Williamsburg Rd at Rising Sun IB,,37.23278,-76.54638,,1,,,
+1_1330,,Old Williamsburg Rd at Dogwood Rd,,37.23135,-76.55462,,1,,,
+1_1094,,Richmond Rd at WAWA,,37.27319,-76.71181,,1,,,
+1_2241,,Strawberry Plains at Berkely Middle,,37.273383,-76.73884,,1,,,
+1_1213,,Treyburn Dr at Diagnostic Center,,37.28083,-76.72636,,1,,,
+1_1216,,Ironbound Rd at Plumeri Park,,37.28896,-76.73225,,1,,,
+1_1168,,Ironbound Rd at Carinos Seafood,,37.28372,-76.73564,,1,,,
+1_2232,,Center St at Casey Blvd,,37.280992,-76.744936,,1,,,
+1_1225,,Monticello Ave at Marketplace Shops,,37.27016,-76.75672,,1,,,
+1_2235,,Casey Blvd at Foundation St,,37.282093,-76.743174,,1,,,
+1_2236,,Treyburn Dr at Sterling Manor,,37.288042,-76.727448,,1,,,
+1_1025,,Richmond Rd at Stratford Rd,,37.31034,-76.73142,,1,,,
+1_1028,,Richmond Rd at Hampton Inn,,37.29895,-76.7275,,1,,,
+1_1250,,Mooretown Rd at Anvil Campground,,37.307904,-76.728654,,1,,,
+1_1253,,Mooretown Rd at Old Taylor Rd,,37.328008,-76.735212,,1,,,
+1_1259,,Mooretown Road at Sentara Cir,,37.33989,-76.7386,,1,,,
+1_1262,,Mooretown Rd at Hornor Ln,,37.3338089,-76.7363694,,1,,,
+1_2501,,Jamestown Rd at Rolfe Rd,,37.2649116,-76.7196935,,1,,,
+1_2500,,Pilot Way at Kings Way,,37.2585744,-76.7410841,,1,,,
+1_2502,,Jamestown Rd at Ludwell Apts,,37.2648457,-76.7196263,,1,,,
+1_2231,,Longhill Rd at Devon Rd,,37.306282,-76.752042,,1,,,
+1_1109,,Merrimac Trl at Douglas Dr,,37.24997,-76.6595,,1,,,
+1_1113,,Water Country Pkwy at Wyndham Garden,,37.262,-76.64306,,1,,,
+1_1174,,Richmond Rd at Business Park,,37.38827,-76.80446,,1,,,
+1_1176,,Chickahominy Rd at Toano Trace,,37.37422,-76.80414,,1,,,
+1_1177,,Chickahominy Rd at 3339 Block,,37.37118,-76.80546,,1,,,
+1_1180,,Chickahominy Rd at Browns Dr,,37.3549,-76.81632,,1,,,
+1_1182,,Chickahominy Rd at Friendship Dr,,37.358421,-76.810684,,1,,,
+1_1183,,Chickahominy Rd at Power Lines,,37.36391,-76.80588,,1,,,
+1_1186,,Richmond Rd at Hunters Creek,,37.37693,-76.79724,,1,,,
+1_1188,,Richmond Rd at CVS,,37.37246,-76.77693,,1,,,
+1_1189,,Richmond Rd at Post Office,,37.37079,-76.77411,,1,,,
+1_1191,,Richmond Rd at 7-Eleven,,37.3622,-76.76614,,1,,,
+1_1192,,Richmond Rd at Colonial Towne,,37.35532,-76.76419,,1,,,
+1_1194,,Richmond Rd at Chesapeake Bank,,37.34533,-76.75841,,1,,,
+1_1267,,Mooretown Rd at Governers Green,,37.295759,-76.724052,,1,,,
+1_1270,,Bypass Rd at Cracker Barrel,,37.28493,-76.71629,,1,,,
+1_1272,,Bypass Rd. at Days Inn,,37.2845,-76.70841,,1,,,
+1_1092,,N Henry St at Highland Park,,37.27753,-76.70564,,1,,,
+1_1002,,Richmond Rd at One Tribe Place,,37.27452,-76.71359,,1,,,
+1_1004,,Richmond Rd at Peter Chang,,37.28072,-76.71855,,1,,,
+1_2233,,Casey Blvd at Settlers Market,,37.277357,-76.749429,,1,,,
+1_1169,,Ironbound Rd at Parker View,,37.28412,-76.7351,,1,,,
+1_1093,,N Henry St at Highland Park,,37.27771,-76.70542,,1,,,
+1_2601,,Events Center,,37.2813432,-76.696483,,1,,,
+1_1036,,N Boundary St at Merchant Square,,37.27138,-76.7074,,1,,,
+1_1138,,Longhill Rd at Warhill Sports,,37.31343,-76.77028,,1,,,
+1_1142,,Longhill Rd at Jolly Pond Vet,,37.31651,-76.78803,,1,,,
+1_1145,,Centerville Rd at Fox Ridge,,37.3276,-76.78896,,1,,,
+1_1148,,Centerville Rd at Handy Ice,,37.33761,-76.76775,,1,,,
+1_1196,,Richmond Rd at Shell,,37.33908,-76.75327,,1,,,
+1_1163,,Longhill Rd at Fords Colony,,37.3011145,-76.7496966,,1,,,
+1_1123,,Merrimac Trl at Merrimac Crossing,,37.28323,-76.68438,,1,,,
+1_1003,,Richmond Rd at Wythe Ave,,37.27859,-76.7165,,1,,,
+1_1227,,Monticello Ave at Post Office,,37.27643,-76.74522,,1,,,
+1_1230,,Pilot Way at Taco Bell,,37.2586334,-76.7407479,,1,,,
+1_2240,,Strawberry Plains at Midlands,,37.267878,-76.740446,,1,,,
+1_1035,,Richmond Rd at Blow Hall,,37.27284,-76.71138,,1,,,
+1_1215,,Treyburn Dr at Sterling Manor,,37.28811,-76.72726,,1,,,
+1_1167,,Ironbound Rd at Tewning Rd,,37.28705,-76.73415,,1,,,
+1_1018,,Richmond Rd at Wellesley,,37.33261,-76.74519,,1,,,
+1_1022,,Richmond Rd at Forest Heights,,37.32875,-76.74201,,1,,,
+1_1291,,Richmond Rd at Olde Towne Rd,,37.31662,-76.73423,,1,,,
+1_1026,,Richmond Rd at Patriot Plaza,,37.30834,-76.73057,,1,,,
+1_1027,,Richmond Rd at Waltz Farm Dr,,37.30568,-76.72942,,1,,,
+1_1158,,Longhill Rd at Longhill Grove,,37.31643,-76.78746,,1,,,
+1_1161,,Longhill Rd at Lafayette High,,37.31442,-76.76362,,1,,,
+1_1110,,Whittakers Trace at Target,,37.25862,-76.64,,1,,,
+1_1114,,Alexander Lee Pkwy at Peoples Place,Site offers a stone trash can and bus shelter,37.26105,-76.65798,,1,,,
+1_1271,,Bypass Rd at Country Inn,,37.28468,-76.712714,,1,,,
+1_1132,,Ashbury Rd at JCC Rec Center,,37.29754,-76.73755,,1,,,
