@@ -1,2 +1,2 @@
 checks,service_days,core_share,first_date,last_date,status,late_share,late_ci_low,late_ci_high,late10_share,early_upper,ontime_low,ontime_high,monotone_adjustment
-39519,15,0.524,2026-10-05,2026-10-19,ok,0.205,0.159,0.25,0.04,0.155,0.639,0.795,0.0001
+59210,22,0.525,2026-10-05,2026-10-26,ok,0.219,0.186,0.249,0.04,0.146,0.636,0.781,0.0001
