@@ -1,3 +1,3 @@
 cycle_minutes,polls,ks_statistic,p_value,uniform
-30,664,0.0274,0.6995,True
-60,664,0.0276,0.6936,True
+30,890,0.0226,0.7522,True
+60,890,0.0228,0.7423,True
