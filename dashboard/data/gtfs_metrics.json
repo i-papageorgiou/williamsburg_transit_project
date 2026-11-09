@@ -1,5 +1,5 @@
 {
-  "snapshot_date": "2026-11-02",
+  "snapshot_date": "2026-11-09",
   "routes": [
     {
       "route_id": "15",
@@ -133,8 +133,8 @@
     }
   ],
   "coverage_km2_by_tier": {
-    "frequent": 13.58,
-    "infrequent": 108.48,
+    "frequent": 13.59,
+    "infrequent": 109.21,
     "moderate": 55.7
   },
   "reliability": {
