@@ -1,0 +1,14 @@
+route_id,agency_id,route_short_name,route_long_name,route_desc,route_type,route_color,route_text_color
+5,1567,5,Monticello,,3,C32032,FFFFFF
+12A,1567,12A,Ironbound,,3,0D8A67,FFFFFF
+15,1567,15,Colonial,,3,7B5E1A,FFFFFF
+9,1567,9,Toano,,3,592D5F,FFFFFF
+1,1567,1,Lee Hall,,3,848486,000000
+11,1567,11,Lackey,,3,382F8E,FFFFFF
+6,1567,6,Jamestown,,3,6E0E3A,FFFFFF
+2,1567,2,Richmond,,3,0098CD,FFFFFF
+7,1567,7,Mooretown,,3,A47842,FFFFFF
+12,1567,12,Ironbound,,3,0D8A67,FFFFFF
+4,1567,4,Longhill,,3,813D97,FFFFFF
+3,1567,3,Merrimac,,3,D96E09,000000
+8,1567,8,W&M,,3,51A83F,000000
